@@ -1227,6 +1227,7 @@ const RAW_RUNTIME_STATE =
           ["server-destroy", "npm:1.0.1"],\
           ["sharp", "npm:0.32.6"],\
           ["shikiji", "npm:0.9.19"],\
+          ["shikiji-core", "npm:0.9.19"],\
           ["string-width", "npm:7.1.0"],\
           ["strip-ansi", "npm:7.1.0"],\
           ["tsconfck", "virtual:5d533155150b0426a1f867cfa36cd351e9216aecf8345c4bbf3e2100b27693457b9e54b38d4bb655c36ea9047de09cf3b42d89448dccfb608982e11165e056e3#npm:3.0.1"],\
