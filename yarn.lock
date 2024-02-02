@@ -4062,14 +4062,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"root-workspace-0b6124@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "root-workspace-0b6124@workspace:."
-  dependencies:
-    astro: "npm:^4.3.1"
-  languageName: unknown
-  linkType: soft
-
 "run-parallel@npm:^1.1.9":
   version: 1.2.0
   resolution: "run-parallel@npm:1.2.0"
@@ -4268,6 +4260,14 @@ __metadata:
   checksum: 10c0/32f2dfd1e9b7168f9a9715eb1b4e21905850f3b50cf02cf476e47e4eebe8e6b762b63a64357896aa29b37e24922b4282df0f492e0d2ace572b43d15525976ff8
   languageName: node
   linkType: hard
+
+"space-ahead@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "space-ahead@workspace:."
+  dependencies:
+    astro: "npm:^4.3.1"
+  languageName: unknown
+  linkType: soft
 
 "space-separated-tokens@npm:^2.0.0":
   version: 2.0.2
