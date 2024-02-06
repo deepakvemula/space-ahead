@@ -66,6 +66,6 @@ a:hover {
   }
 
 }
-.blinkingCursor {
+.blinking {
     animation: cursor-blink 1.2s steps(2) infinite;
 }
