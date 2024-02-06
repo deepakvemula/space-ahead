@@ -1,0 +1,70 @@
+.honk-ff {
+  font-family: "Honk", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+  "MORF" 15,
+  "SHLN" 50;
+}
+.kanit-light {
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.kanit-light-italic {
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.kanit-regular {
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.kanit-regular-italic {
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.kanit-bold {
+  font-family: "Kanit", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.kanit-bold-italic {
+  font-family: "Kanit", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+html, body {
+  font-size: 24px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+a:hover {
+  background: linear-gradient(0deg, #ff40af 30%, #ff6b6d 40%, #ffff85 52%);
+  background-clip: text;
+  color: transparent;
+}
+@keyframes cursor-blink {
+  0% {
+    opacity: 0;
+  }
+
+}
+.blinkingCursor {
+    animation: cursor-blink 1.2s steps(2) infinite;
+}
