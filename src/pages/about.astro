@@ -1,0 +1,70 @@
+---
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+
+import MainLayout from "../layouts/MainLayout.astro";
+
+const hobbies = ["Space Exploration", "Writing", "Space Photography"];
+---
+
+<MainLayout pageTitle="Space Ahead | About">
+  <section>
+    <Nav />
+    <div class="pageContent">
+      <h1 class="honk-ff"><span class="blinking">About</span> Space Ahead</h1>
+      <p class="kanit-regular balance-text">
+        Space Ahead is 👩‍🚀 <strong>Astro-naut Sid</strong>'s blog. He writes
+        stories about his travels to galaxies far and wide.
+      </p>
+
+      <p class="kanit-regular balance-text">
+        Sid is known for his love of adventure and his insatiable curiosity
+        about the universe. He has explored countless planets, discovered new
+        life forms, and made friends with aliens along the way. 🚀
+      </p>
+      <p class="kanit-regular balance-text">
+        His favorite planet is <span class="kanit-bold">Earth</span>, where he
+        once had a close encounter with a friendly alien named <span
+          class="kanit-bold">Astro</span
+        >. Sid's next mission is to explore the <span class="kanit-bold"
+          >Andromeda Galaxy</span
+        > and discover what secrets it holds. 🪐
+      </p>
+      <p class="kanit-regular">My hobbies are:</p>
+      <ul class="hobbies kanit-bold">
+        {hobbies.map((hobby) => <li>{hobby}</li>)}
+      </ul>
+    </div>
+    <Footer />
+  </section>
+</MainLayout>
+<style>
+  .pageContent {
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .hobbies {
+    list-style-position: inside;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  /* .hobbies li {
+    padding: 0 0 0 1rem;
+  } */
+  .hobbies li::marker {
+    content: "🚀";
+  }
+  .hobbies li:nth-child(3n)::marker {
+    content: "🪐";
+  }
+  .hobbies li:nth-child(3n-1)::marker {
+    content: "🌎";
+  }
+  @media (orientation: portrait) {
+    .pageContent {
+      text-align: left;
+      padding: 2rem 0;
+    }
+  }
+</style>

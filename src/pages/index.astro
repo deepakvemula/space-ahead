@@ -1,51 +1,12 @@
 ---
-import Footer from '../components/Footer.astro';
-import Nav from '../components/Nav.astro';
-import '../styles/global.css';
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/space-ahead/space-ahead-logo.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Honk&family=Kanit:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-		<title>Space Ahead - An Astro Blog</title>
-		<style>
-			section {
-				background: rgb(22,1,59);
-				background: radial-gradient(at bottom, rgba(22,1,59,1) 55%, rgba(251,99,131,1) 72%, rgba(229,210,90,1) 80%, rgba(0,0,0,1) 90%);
-				background-size: 100%;
-				background-position: 0 100%;
-				display: flex;
-				flex-direction: column;
-				padding: 1rem;
-				align-items: center;
-				justify-content: center;
-				height: 100dvh;
-			}
-			h1 {
-				font-size: 4rem;
-				margin: 0;
-			}
-			@media (orientation: portrait) {
-				section {
-					background: radial-gradient(at left, rgba(22,1,59,1) 60%, rgba(251,99,131,1) 70%, rgba(229,210,90,1) 77%, rgba(0,0,0,1) 87%);
-					display: flex;
-					justify-content: center;
-					align-items: start;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<section>
-			<h1 class="honk-ff">Space Ahead <span class="blinking">!</span></h1>
-			<Nav/>
-			<Footer/>
-		</section>
-	</body>
-</html>
+<MainLayout pageTitle="Space Ahead - An Astro Blog">
+	<section>
+		<h1 class="honk-ff">Space Ahead <span class="blinking">!</span></h1>
+		<Nav/>
+		<Footer/>
+	</section>
+</MainLayout>
