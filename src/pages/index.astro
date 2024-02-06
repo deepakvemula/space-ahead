@@ -1,7 +1,6 @@
 ---
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-
-const currentYear = (new Date()).getFullYear();
 ---
 
 <html lang="en">
@@ -37,15 +36,6 @@ const currentYear = (new Date()).getFullYear();
 				display: flex;
 				gap: 1rem;
 			}
-			footer {
-				display: flex;
-				align-items: flex-end;
-				padding: 1rem 0;
-				/* background-color: rgb(22,1,59); */
-				color: whitesmoke;
-				font-size: 0.75rem;
-				gap: 1.5rem;
-			}
 			@media (orientation: portrait) {
 				section {
 					background: radial-gradient(at left, rgba(22,1,59,1) 60%, rgba(251,99,131,1) 70%, rgba(229,210,90,1) 77%, rgba(0,0,0,1) 87%);
@@ -68,11 +58,7 @@ const currentYear = (new Date()).getFullYear();
 				<a href="/space-ahead/blog">Stories</a>
 				<a href="/space-ahead/about/">About</a>
 			</nav>
-			<footer class="kanit-light">
-				<span>©️ {currentYear}</span>
-				<a href="https://github.com/djsiddz" title="Astro-naut Siddhesh Thadeshwar">👨‍🚀 Siddhesh Thadeshwar</a>
-				<a href="https://github.com/djsiddz/space-ahead" title="Star this on GitHub">⭐ this on GitHub</a>
-			</footer>
+			<Footer/>
 		</section>
 	</body>
 </html>
