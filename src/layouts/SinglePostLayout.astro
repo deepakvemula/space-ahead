@@ -18,7 +18,9 @@ const { frontmatter } = Astro.props;
     src={frontmatter.image.url}
     alt={frontmatter.image.alt}
   />
-  <slot />
+  <div class="post-matter kanit-regular balance-text">
+    <slot />
+  </div>
   <a class="back-link kanit-bold" href="/space-ahead/blog">⬅️ Back to All Stories</a>
 </MainLayout>
 <style>
@@ -42,6 +44,9 @@ const { frontmatter } = Astro.props;
     margin-top: 2rem;
     margin-bottom: 4rem;
   }
+  .post-matter {
+    text-align: center;
+  }
   @media (orientation: portrait) {
     h1 {
       padding-top: 2rem;
@@ -50,6 +55,9 @@ const { frontmatter } = Astro.props;
     .cover-img {
       width: 100%;
       border-radius: 2rem;
+    }
+    .post-matter {
+      text-align: left;
     }
   }
 </style>
