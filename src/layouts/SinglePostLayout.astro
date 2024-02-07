@@ -19,6 +19,7 @@ const { frontmatter } = Astro.props;
     alt={frontmatter.image.alt}
   />
   <slot />
+  <a class="back-link kanit-bold" href="/space-ahead/blog">⬅️ Back to All Stories</a>
 </MainLayout>
 <style>
   h1 {
@@ -33,6 +34,13 @@ const { frontmatter } = Astro.props;
     height: auto;
     border-radius: 4rem;
     margin-bottom: 2rem;
+  }
+  .back-link {
+    border: 1px solid whitesmoke;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
   }
   @media (orientation: portrait) {
     h1 {
