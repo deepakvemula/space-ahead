@@ -39,7 +39,8 @@ const hobbies = ["Space Exploration", "Writing", "Space Photography"];
   .hobbies {
     display: inline-flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    row-gap: 0;
+    column-gap: 1rem;
     list-style-position: inside;
     margin-top: 0;
   }
@@ -47,15 +48,18 @@ const hobbies = ["Space Exploration", "Writing", "Space Photography"];
     padding: 0 0 0 1rem;
   }
   .hobbies li::marker {
-    content: "🚀";
+    content: "🚀 ";
   }
   .hobbies li:nth-child(3n)::marker {
-    content: "🪐";
+    content: "🪐 ";
   }
   .hobbies li:nth-child(3n-1)::marker {
-    content: "🌎";
+    content: "🌎 ";
   }
   @media (orientation: portrait) {
+    .hobbies {
+      padding-left: 0;
+    }
     .pageContent {
       padding: 2rem 0;
       text-align: left;
