@@ -1,0 +1,37 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+import PostsList from "../../components/PostsList.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob("../posts/*.md");
+  return [
+    { params: { tag: "astro" }, props: { posts: allPosts } },
+    { params: { tag: "blogging" }, props: { posts: allPosts } },
+    { params: { tag: "dog" }, props: { posts: allPosts } },
+    { params: { tag: "astro" }, props: { posts: allPosts } },
+    { params: { tag: "earth" }, props: { posts: allPosts } },
+    { params: { tag: "mars" }, props: { posts: allPosts } },
+    { params: { tag: "moon" }, props: { posts: allPosts } },
+    { params: { tag: "movies" }, props: { posts: allPosts } },
+    { params: { tag: "popcorn" }, props: { posts: allPosts } },
+    { params: { tag: "space" }, props: { posts: allPosts } },
+    { params: { tag: "space travel" }, props: { posts: allPosts } },
+    { params: { tag: "space exploration" }, props: { posts: allPosts } },
+  ];
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+const filteredPosts = posts.filter((post) =>
+  post.frontmatter.tags?.includes(tag)
+);
+---
+
+<MainLayout pageTitle={tag}>
+  <p class="kanit-regular">
+    Posts tagged with <span class="kanit-bold">{tag}</span>
+  </p>
+  <PostsList posts={filteredPosts} />
+</MainLayout>
+<style></style>
