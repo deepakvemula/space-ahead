@@ -1,0 +1,47 @@
+---
+import "../styles/global.css";
+
+import MainLayout from "./MainLayout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<MainLayout>
+  <h1 class="honk-ff balance-text">{frontmatter.title}</h1>
+  <p class="pub-details kanit-regular balance-text">
+    by 🧑‍🚀 <span class="kanit-bold">{frontmatter.author}</span> on <span
+      class="kanit-bold">{new Date(frontmatter.pubDate).toDateString()}</span
+    >
+  </p>
+  <img
+    class="cover-img"
+    src={frontmatter.image.url}
+    alt={frontmatter.image.alt}
+  />
+  <slot />
+</MainLayout>
+<style>
+  h1 {
+    padding-bottom: 2rem;
+  }
+  .pub-details {
+    font-size: 0.75rem;
+    padding-bottom: 1rem;
+  }
+  .cover-img {
+    width: 80%;
+    height: auto;
+    border-radius: 4rem;
+    margin-bottom: 2rem;
+  }
+  @media (orientation: portrait) {
+    h1 {
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+    }
+    .cover-img {
+      width: 100%;
+      border-radius: 2rem;
+    }
+  }
+</style>
