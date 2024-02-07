@@ -1,0 +1,49 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const allPosts = await Astro.glob("../posts/*.md");
+const uniqueTags = [
+  ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+];
+---
+
+<MainLayout pageTitle="Space Ahead - Tag Index">
+  <div class="page-content">
+    <h1 class="honk-ff balance-text">All <span class="blinking">Tags</span></h1>
+    <div class="tags-container">
+      {
+        uniqueTags.map((tag) => (
+          <p class="tag-card">
+            <a href={"/space-ahead/tags/" + tag}>{tag}</a>
+          </p>
+        ))
+      }
+    </div>
+  </div>
+</MainLayout>
+<style>
+  .page-content {
+    padding: 2rem 0;
+    text-align: center;
+    max-width: 80%;
+  }
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .tag-card {
+    display: flex;
+    width: max-content;
+    padding: 0.25rem 1rem;
+    margin: 1rem;
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+  }
+  @media (orientation: portrait) {
+    .page-content {
+      padding: 2rem 0;
+      text-align: left;
+      max-width: 100%;
+    }
+  }
+</style>
