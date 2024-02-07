@@ -1,0 +1,36 @@
+---
+const { posts } = Astro.props;
+---
+
+<ul class="posts-list kanit-bold">
+  {
+    posts.map((post) => (
+      <li>
+        <a href={post.url}>{post.frontmatter.title}</a>
+      </li>
+    ))
+  }
+</ul>
+<style>
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 0;
+    column-gap: 1rem;
+    list-style-type: none;
+    align-items: center;
+  }
+  .posts-list li {
+    padding: 0 0 2rem 0;
+  }
+  @media (orientation: portrait) {
+    .posts-list {
+      align-items: start;
+      padding-left: 0;
+    }
+    .posts-list li {
+      padding: 0 0 1rem 0;
+    }
+  }
+</style>
