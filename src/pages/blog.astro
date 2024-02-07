@@ -1,10 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-const posts = [
-  { slug: "post-1", title: "First Adventure on Mars 🟠" },
-  { slug: "post-2", title: "To the Moon and Back! 🌚" },
-  { slug: "post-3", title: "Aim for the Stars! ✨" },
-];
+
+const allPosts = await Astro.glob("../pages/posts/*.md")
 ---
 
 <MainLayout pageTitle="Space Ahead | Stories">
@@ -16,9 +13,9 @@ const posts = [
   </p>
   <ul class="posts-list kanit-bold">
     {
-      posts.map((post, index) => (
+      allPosts.map((post) => (
         <li>
-          <a href={`/space-ahead/posts/${post.slug}`}>{post.title}</a>
+          <a href={post.url}>{post.frontmatter.title}</a>
         </li>
       ))
     }
