@@ -8,17 +8,17 @@ const { frontmatter } = Astro.props;
 
 <MainLayout>
   <h1 class="honk-ff balance-text">{frontmatter.title}</h1>
-  <p class="pub-details kanit-regular balance-text">
+  <p class="pub-details text-center kanit-regular balance-text">
     by 🧑‍🚀 <span class="kanit-bold">{frontmatter.author}</span> on <span
       class="kanit-bold">{new Date(frontmatter.pubDate).toDateString()}</span
-    >
   </p>
+  <p class="pub-details kanit-regular text-center balance-text">Tagged: {frontmatter.tags.join(" | ")}</p>
   <img
     class="cover-img"
     src={frontmatter.image.url}
     alt={frontmatter.image.alt}
   />
-  <div class="post-matter kanit-regular balance-text">
+  <div class="kanit-regular balance-text">
     <slot />
   </div>
   <a class="back-link kanit-bold" href="/space-ahead/blog">⬅️ Back to All Stories</a>
@@ -29,7 +29,9 @@ const { frontmatter } = Astro.props;
   }
   .pub-details {
     font-size: 0.75rem;
-    padding-bottom: 1rem;
+  }
+  .pub-details:not(:last-of-type) {
+    margin-bottom: 0;
   }
   .cover-img {
     width: 80%;
@@ -44,7 +46,7 @@ const { frontmatter } = Astro.props;
     margin-top: 2rem;
     margin-bottom: 4rem;
   }
-  .post-matter {
+  .text-center {
     text-align: center;
   }
   @media (orientation: portrait) {
@@ -55,9 +57,6 @@ const { frontmatter } = Astro.props;
     .cover-img {
       width: 100%;
       border-radius: 2rem;
-    }
-    .post-matter {
-      text-align: left;
     }
   }
 </style>
