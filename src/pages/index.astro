@@ -1,6 +1,27 @@
 ---
+import SpaceEmoji from "../components/SpaceEmoji";
 import MainLayout from "../layouts/MainLayout.astro";
+
+const emojis = [
+  "🚀 To Infinity, And Beyond!",
+  "🌌 In a galaxy far far away...",
+  "⭐ May the force be with you!",
+  "☄️ Game Over",
+  "☀️ “Time is an illusion. Lunchtime doubly so.” — Douglas Adams, H2G2",
+  "🌑 The Eagle has landed!",
+  "🛰️ 42",
+  "🤖 Wall-E",
+  "👽 E.T. Phone Home",
+  "🌠 We'll be Counting Stars",
+  "👾 Press Start",
+  "🌍 Powered by Astro & Preact",
+  "🖖 Live long and prosper!",
+];
 ---
+
 <MainLayout pageTitle="Space Ahead - An Astro Blog">
-	<h1 class="honk-ff balance-text">Space Ahead <span class="blinking">!</span></h1>
+  <h1 class="honk-ff balance-text">
+    Space Ahead <span class="blinking">!</span>
+  </h1>
+  <SpaceEmoji client:load emojis={emojis} />
 </MainLayout>
