@@ -5,17 +5,14 @@ import MainLayout from "../layouts/MainLayout.astro";
 const allPosts = await Astro.glob("../pages/posts/*.md")
 ---
 
-<MainLayout pageTitle="Space Ahead | Stories">
-  <h1 class="honk-ff balance-text">
-    The <span class="blinking">Stories</span>
-  </h1>
-  <p class="kanit-regular balance text">
-    This is where I post about my space exploration journeys.
-  </p>
-  <PostsList posts={allPosts} />
+<MainLayout activePage="blog" pageTitle="Space Ahead | Stories">
+  <div class="page-content">
+    <h1 class="sigmar-ff balance-text">
+      All Travel Stories ✨</span>
+    </h1>
+    <p class="kanit-regular balance text">
+      Read about my space adventures, explorations and the aliens I've met on my journeys.
+    </p>
+    <PostsList posts={allPosts} />
+  </div>
 </MainLayout>
-<style>
-  h1 {
-    padding-top: 2rem;
-  }
-</style>

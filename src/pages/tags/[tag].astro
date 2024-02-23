@@ -20,10 +20,12 @@ const { posts } = Astro.props;
 ---
 
 <MainLayout pageTitle={"Space Ahead - "+tag+" posts"}>
-  <h1 class="kanit-regular">
-    Posts tagged with <span class="honk-ff blinking">{tag}</span>
-  </h1>
-  <PostsList posts={posts} />
+  <div class="page-content">
+    <h1 class="kanit-regular">
+      Posts tagged with <span class="sigmar-ff">{tag}</span>
+    </h1>
+    <PostsList posts={posts} />
+  </div>
 </MainLayout>
 <style>
   @media (orientation: portrait) {

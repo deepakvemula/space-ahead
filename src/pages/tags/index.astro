@@ -7,13 +7,14 @@ const uniqueTags = [
 ];
 ---
 
-<MainLayout pageTitle="Space Ahead - Tag Index">
+<MainLayout activePage="tags" pageTitle="Space Ahead - Tag Index">
   <div class="page-content">
-    <h1 class="honk-ff balance-text">All <span class="blinking">Tags</span></h1>
+    <h1 class="sigmar-ff balance-text">All Tags 🏷️</h1>
+    <p class="kanit-regular">Select a tag to view posts related to the tag.</p>
     <div class="tags-container">
       {
         uniqueTags.map((tag) => (
-          <p class="tag-card">
+          <p class="tag-card kanit-regular">
             <a href={"/space-ahead/tags/" + tag}>{tag}</a>
           </p>
         ))
@@ -22,11 +23,6 @@ const uniqueTags = [
   </div>
 </MainLayout>
 <style>
-  .page-content {
-    padding: 2rem 0;
-    text-align: center;
-    max-width: 80%;
-  }
   .tags-container {
     display: flex;
     flex-wrap: wrap;
@@ -38,12 +34,6 @@ const uniqueTags = [
     margin: 1rem;
     border: 1px solid whitesmoke;
     border-radius: 1rem;
-  }
-  @media (orientation: portrait) {
-    .page-content {
-      padding: 2rem 0;
-      text-align: left;
-      max-width: 100%;
-    }
+    font-size: 0.75rem;
   }
 </style>

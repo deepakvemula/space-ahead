@@ -2,44 +2,39 @@
 const { posts } = Astro.props;
 ---
 
-<section class="posts-list kanit-bold">
+<div class="posts-list">
   {
     posts.reverse().map((post) => (
       <div class="card">
         <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt} /><br/>
-        <a class="balance-text" href={post.url}>{post.frontmatter.title}<br/><span class="kanit-light">{new Date(post.frontmatter.pubDate).toDateString()}</span></a>
+        <a class="kanit-bold balance-text" href={post.url}>{post.frontmatter.title}<br/><span class="kanit-light pub-date">{new Date(post.frontmatter.pubDate).toDateString()}</span></a>
       </div>
     ))
   }
-</section>
+</div>
 <style>
   .posts-list {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    row-gap: 0;
-    column-gap: 3rem;
-    list-style-type: none;
-    align-items: center;
-    margin-bottom: 3rem;
+    gap: 2rem;
+    justify-content: center;
   }
   .posts-list .card img {
-    max-width: 320px;
-    max-height: 180px;
+    max-width: 360px;
+    max-height: 202px;
     border-radius: 1rem;
     margin-bottom: 1rem;
   }
   @media (orientation: portrait) {
     .posts-list {
-      flex-direction: column;
-      row-gap: 3rem;
-      column-gap: 0;
-      padding-left: 0;
-      padding-right: 0;
+      font-size: 0.75rem;
     }
     .posts-list .card img {
       max-width: 240px;
       max-height: 135px;
+    }
+    .pub-date {
+      font-size: 0.5rem;
     }
   }
 </style>

@@ -1,13 +1,15 @@
 ---
+import PostsList from "../components/PostsList.astro";
 import SpaceEmoji from "../components/SpaceEmoji";
 import MainLayout from "../layouts/MainLayout.astro";
+
+const allPosts = await Astro.glob("../pages/posts/*.md")
 
 const emojis = [
   "🚀 To Infinity, And Beyond!",
   "🌌 In a galaxy far far away...",
   "⭐ May the force be with you!",
   "☄️ Game Over",
-  "☀️ “Time is an illusion. Lunchtime doubly so.” — Douglas Adams, H2G2",
   "🌑 The Eagle has landed!",
   "🛰️ 42",
   "🤖 Wall-E",
@@ -16,12 +18,167 @@ const emojis = [
   "👾 Press Start",
   "🌍 Powered by Astro & Preact",
   "🖖 Live long and prosper!",
+  // "☀️ “Time is an illusion. <br/>Lunchtime doubly so.” — Douglas Adams, H2G2",
 ];
 ---
 
-<MainLayout pageTitle="Space Ahead - An Astro Blog">
-  <h1 class="honk-ff balance-text">
-    Space Ahead <span class="blinking">!</span>
-  </h1>
-  <SpaceEmoji client:load emojis={emojis} />
+<MainLayout activePage="home" pageTitle="Space Ahead - An Astro Blog">
+  <div class="jumbo-banner">
+    <div class="left">
+      <span class="tag kanit-light">🟡 From galaxies far and wide</span>
+      <h1 class="sigmar-ff balance-text">
+        Travel Stories ✨
+      </h1>
+      <p class="kanit-regular balance-text sub-text">Written by 🧑‍🚀 Astro-naut Sid!</p>
+      <div class="buttons">
+        <a href="#posts" class="cta kanit-regular">Read Now 🚀</a>
+        <a href="/space-ahead/about" class="cta secondary-cta kanit-regular">Know More</a>
+      </div>
+    </div>
+    <div class="right">
+      <p class="astro-naut">
+        🧑‍🚀
+      </p>
+      <div class="breaking-news">
+        <p class="kanit-regular">👋 Messages from Space:</p>
+        <SpaceEmoji client:load emojis={emojis} />
+      </div>
+    </div>
+  </div>
+  <div id="posts" class="posts-section">
+    <h2 class="sigmar-ff">Recent Stories</h2>
+    <PostsList posts={allPosts} />
+  </div>
 </MainLayout>
+<style>
+  .jumbo-banner {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+  .jumbo-banner.left, .jumbo-banner.right {
+    display:block;
+  }
+  .astro-naut {
+    font-size: 16rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .buttons {
+    column-gap: 2rem;
+    display: flex;
+    margin-top: 6rem;
+  }
+  .cta {
+    padding: 0.5rem 2rem;
+    font: 2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+  }
+  html.dark .cta {
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    color: black;
+  }
+  html.dark .cta.secondary-cta {
+    background-color: transparent;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+  }
+  html.light .cta {
+    background-color: black;
+    border: 1px solid black;
+    color: whitesmoke;
+  }
+  html.light .cta.secondary-cta {
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+  }
+
+  .breaking-news {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  html.light .breaking-news {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+  }
+  .breaking-news > p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+  }
+  .tag {
+    border-radius: 1rem;
+    font-size: 0.5rem;
+    padding: 0.25rem 0.5rem;
+  }
+  .posts-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    width: 100%;
+  }
+  html.dark .tag {
+    /* border: 1px solid var(--darkText); */
+    border: 1px solid grey;
+  }
+  html.light .tag {
+    /* border: 1px solid var(--lightText); */
+    border: 1px solid grey;
+  }
+  h1 {
+    padding-top: 0;
+  }
+  @media (orientation: portrait) {
+    .jumbo-banner {
+      flex-direction: column;
+      gap: 1.5rem;
+      padding-bottom: 3rem;
+      padding-top: 0;
+      width: 100%;
+    }
+    .jumbo-banner.left, .jumbo-banner.right {
+      width: 100%;
+    }
+    p.sub-text {
+      margin: 0;
+      font-size: 0.75rem;
+    }
+    .astro-naut {
+      font-size: 8rem;
+    }
+    .buttons {
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 3rem;
+      column-gap: 0.75rem;
+      row-gap: 0.75rem;
+      font-size: 0.75rem;
+    }
+    .cta {
+      padding: 0.5rem 1rem;
+    }
+    .cta.secondary-cta {
+      /* opacity: 0.5; */
+      padding: 0.5rem 1rem;
+    }
+    .posts-section {
+      margin-bottom: 3rem;
+      margin-top: 3rem;
+    }
+  }
+</style>

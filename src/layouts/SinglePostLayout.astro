@@ -7,21 +7,25 @@ const { frontmatter } = Astro.props;
 ---
 
 <MainLayout>
-  <h1 class="honk-ff balance-text">{frontmatter.title}</h1>
-  <p class="pub-details text-center kanit-regular balance-text">
-    by 🧑‍🚀 <span class="kanit-bold">{frontmatter.author}</span> on <span
-      class="kanit-bold">{new Date(frontmatter.pubDate).toDateString()}</span
-  </p>
-  <p class="pub-details kanit-regular text-center balance-text">Tagged: {frontmatter.tags.join(" | ")}</p>
-  <img
-    class="cover-img"
-    src={frontmatter.image.url}
-    alt={frontmatter.image.alt}
-  />
-  <div class="kanit-regular balance-text">
-    <slot />
+  <div class="page-content">
+    <h1 class="sigmar-ff balance-text">{frontmatter.title}</h1>
+    <p class="pub-details text-center kanit-regular balance-text">
+      by 🧑‍🚀 <span class="kanit-bold">{frontmatter.author}</span> on <span
+        class="kanit-bold">{new Date(frontmatter.pubDate).toDateString()}</span
+    </p>
+    <p class="pub-details kanit-regular text-center balance-text">
+      Tagged: {frontmatter.tags.map(tag => <a class="tag-card kanit-regular" href={"/space-ahead/tags/" + tag}>{tag}</a>)}
+    </p>
+    <img
+      class="cover-img"
+      src={frontmatter.image.url}
+      alt={frontmatter.image.alt}
+    />
+    <div class="kanit-regular balance-text">
+      <slot />
+    </div>
+    <a class="back-link kanit-bold" href="/space-ahead">⬅️ Back to All Stories</a>
   </div>
-  <a class="back-link kanit-bold" href="/space-ahead/blog">⬅️ Back to All Stories</a>
 </MainLayout>
 <style>
   h1 {
@@ -29,6 +33,7 @@ const { frontmatter } = Astro.props;
   }
   .pub-details {
     font-size: 0.75rem;
+    line-height: 2;
   }
   .pub-details:not(:last-of-type) {
     margin-bottom: 0;
@@ -40,18 +45,32 @@ const { frontmatter } = Astro.props;
     margin-bottom: 2rem;
   }
   .back-link {
-    border: 1px solid whitesmoke;
     border-radius: 2rem;
     padding: 0.5rem 1rem;
     margin-top: 2rem;
     margin-bottom: 4rem;
+    display: flex;
   }
   .text-center {
     text-align: center;
   }
+  .tag-card {
+    width: max-content;
+    padding: 0.25rem 0.5rem;
+    margin: 0.25rem;
+    border-radius: 1rem;
+    font-size: 0.5rem;
+    display: inline-flex;
+    flex-wrap: nowrap;
+  }
+  html.dark .tag-card, html.dark .back-link {
+    border: 1px solid whitesmoke;
+  }
+  html.light .tag-card, html.light .back-link {
+    border: 1px solid black;
+  }
   @media (orientation: portrait) {
     h1 {
-      padding-top: 2rem;
       padding-bottom: 1rem;
     }
     .cover-img {

@@ -3,10 +3,9 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="kanit-light">
-  <span>©️ {currentYear}</span>
-  <a href="https://github.com/djsiddz" title="Astro-naut Siddhesh Thadeshwar" target="_blank"
-    >👨‍🚀 Siddhesh Thadeshwar</a
-  >
+  <a href="https://github.com/djsiddz" title="Astro-naut Siddhesh Thadeshwar" target="_blank">
+    <span>©️ {currentYear}</span> 👨‍🚀 Siddhesh Thadeshwar
+  </a>
   <a href="https://github.com/djsiddz/space-ahead" title="Star this on GitHub" target="_blank"
     >⭐ this on GitHub</a
   >
@@ -17,16 +16,22 @@ const currentYear = new Date().getFullYear();
 <style>
   footer {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     font-size: 0.75rem;
     gap: 1.5rem;
     padding: 1rem 0;
+    width: 100%;
   }
   @media (orientation: portrait) {
     footer {
       font-size: 0.5rem;
       gap: 1rem;
-      padding: 0;
+    }
+    footer a:first-child {
+      width: 100%;
+      text-align: center;
     }
   }
 </style>

@@ -4,7 +4,7 @@ import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 
-const { pageTitle } = Astro.props;
+const { pageTitle, activePage } = Astro.props;
 ---
 
 <html lang="en">
@@ -13,19 +13,18 @@ const { pageTitle } = Astro.props;
     <link rel="icon" href="/space-ahead/space-ahead-logo.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Honk&family=Kanit:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Kanit:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
       rel="stylesheet"
     />
     <title>{pageTitle}</title>
   </head>
   <body>
+    <Nav activePage={activePage}/>
     <section>
-      <Nav/>
       <slot />
-      <Footer/>
     </section>
+    <Footer/>
   </body>
 </html>
