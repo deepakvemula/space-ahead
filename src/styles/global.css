@@ -33,6 +33,9 @@
   padding: 2rem 0;
   text-align: center;
 }
+.no-scroll {
+  overflow: hidden !important;
+}
 
 /* root elements */
 html, body {
@@ -67,6 +70,9 @@ section {
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
+}
+section:first-of-type {
+  padding-top: 5rem;
 }
 h1 {
   font-size: 3rem;
