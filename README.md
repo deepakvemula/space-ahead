@@ -6,10 +6,10 @@ A minimal blog created to test Astro's capabilities.
 
 - Astro Basics ✅
 - Layouts & Slots ✅
+- Adding a React Component as an Island. ✅
 - View Transitions ⏳
-- Content Colletions
-- Adding a React Component as an Island.
+- Content Collections
 
 ## Future Scope
 
-I might want to turn this into an Astro theme in the future.
+I want to turn this into an Astro theme in the future.
