@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/SinglePostLayout.astro
 title: "May the Fourth be with you! 🍿"
 author: "Astro-naut Sid"
 description: "This post will show up on its own!"

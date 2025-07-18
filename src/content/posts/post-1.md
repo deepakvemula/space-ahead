@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/SinglePostLayout.astro
 title: "First Adventure on Mars 🟠"
 description: "This is the first post of my new blog."
 author: "Astro-naut Sid"

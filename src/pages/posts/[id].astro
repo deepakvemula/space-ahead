@@ -1,0 +1,111 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import MainLayout from "../../layouts/MainLayout.astro";
+// import Button from '../../components/Button.astro';
+// import Subscribe from '../../components/Subscribe.astro';
+import { sortItemsByDateDesc, createSlugFromTitle } from '../../utils/helpers';
+import "../styles/global.css";
+
+export async function getStaticPaths() {
+    const posts = (await getCollection('post')).sort(sortItemsByDateDesc);
+    const postCount = posts.length;
+    return posts.map((post, index) => ({
+        params: { id: post.id },
+        props: {
+            post,
+            prevPost: index + 1 !== postCount ? posts[index + 1] : null,
+            nextPost: index !== 0 ? posts[index - 1] : null
+        }
+    }));
+}
+
+type Props = { post: CollectionEntry<'post'>; prevPost: CollectionEntry<'post'>; nextPost: CollectionEntry<'post'> };
+
+const { href } = Astro.url;
+const { post, prevPost, nextPost } = Astro.props;
+const { title, pubDate, author, tags = [], image } = post.data;
+const { Content } = await render(post);
+---
+
+<MainLayout>
+  <div class="page-content">
+    <h1 class="sigmar-ff balance-text">{title}</h1>
+    <p class="pub-details text-center kanit-regular balance-text">
+      by 🧑‍🚀 <span class="kanit-bold">{author}</span> on <span
+        class="kanit-bold">{new Date(pubDate).toDateString()}</span
+    </p>
+    <p class="pub-details kanit-regular text-center balance-text">
+      Tagged: {tags.map(tag => <a class="tag-card kanit-regular" href={"/space-ahead/tags/" + tag}>{tag}</a>)}
+    </p>
+    <img
+      class="cover-img"
+      src={image.url}
+      alt={image.alt}
+    />
+    <div class="kanit-regular balance-text">
+      <slot />
+    </div>
+    <a class="back-link kanit-bold" href="/space-ahead">⬅️ Back to All Stories</a>
+    {(prevPost || nextPost) && (
+            <div class="my-16 sm:my-24">
+                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">Read Next</h2>
+                {nextPost && <a class="back-link kanit-bold" href="/space-ahead">Next Post: {nextPost.title}</a>}
+                {prevPost && <a class="back-link kanit-bold" href="/space-ahead">Prev Post: {prevPost.title}</a>}
+            </div>
+        )}
+    
+    
+  </div>
+</MainLayout>
+<style>
+  h1 {
+    padding-bottom: 2rem;
+  }
+  .pub-details {
+    font-size: 0.75rem;
+    line-height: 2;
+  }
+  .pub-details:not(:last-of-type) {
+    margin-bottom: 0;
+  }
+  .cover-img {
+    width: 80%;
+    height: auto;
+    border-radius: 4rem;
+    margin-bottom: 2rem;
+  }
+  .back-link {
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    display: flex;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .tag-card {
+    width: max-content;
+    padding: 0.25rem 0.5rem;
+    margin: 0.25rem;
+    border-radius: 1rem;
+    font-size: 0.5rem;
+    display: inline-flex;
+    flex-wrap: nowrap;
+  }
+  html.dark .tag-card, html.dark .back-link {
+    border: 1px solid whitesmoke;
+  }
+  html.light .tag-card, html.light .back-link {
+    border: 1px solid black;
+  }
+  @media (orientation: portrait) {
+    h1 {
+      padding-bottom: 1rem;
+    }
+    .cover-img {
+      width: 100%;
+      border-radius: 2rem;
+    }
+  }
+</style>

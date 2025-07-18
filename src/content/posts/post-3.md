@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/SinglePostLayout.astro
 title: "Aim for the Stars! ✨"
 author: "Astro-naut Sid"
 description: "I had some challenges, but asking in the community really helped!"

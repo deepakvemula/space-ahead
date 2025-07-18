@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/SinglePostLayout.astro
 title: "To the Moon and Back! 🌚"
 author: "Astro-naut Sid"
 description: "After learning some Astro, I couldn't stop!"
