@@ -64,15 +64,21 @@ html.light body {
 }
 
 /* semantic elements */
-section {
+main {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
-}
-section:first-of-type {
   padding-top: 5rem;
+  margin: 0 auto;
+}
+main.max-w {
+  max-width: 64rem;
+}
+footer.max-w {
+  max-width: 64rem;
+  margin: 0 auto;
 }
 h1 {
   font-size: 3rem;
@@ -98,7 +104,7 @@ html.light a:hover {
   color: #ff6b6d;
 }
 html.dark a:hover {
-  color: #ffff85;
+  color: rgb(255, 255, 133);
 }
 
 @media (orientation: portrait) {

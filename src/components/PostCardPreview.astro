@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+type Props = { post: CollectionEntry<'blogs'> };
+const { post } = Astro.props;
+const { title, pubDate, description, image } = post.data;
+---
+<a class="kanit-bold balance-text" href={"/space-ahead/blog/"+post.id}>
+  <div class="post-card">
+    {image && image.url && <Image src={image.url} alt={image.alt || ''} width={360} height={202} /><br/>}
+    {title}<br/>
+    <span class="kanit-light pub-date">{new Date(pubDate).toDateString()}</span><br/>
+    {description && <span class="kanit-light">{description}</span>}
+  </div>
+</a>
+<style>
+  @media (orientation: portrait) {
+    .pub-date {
+      font-size: 0.5rem;
+    }
+  }
+</style>

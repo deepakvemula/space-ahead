@@ -1,26 +1,25 @@
 ---
+import siteConfig from "../site.config";
 import Hamburger from "./Hamburger.astro";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
+import SiteIdentity from "./SiteIdentity.astro";
 const { activePage } = Astro.props;
 ---
 <header>
-  <nav class="kanit-regular">
-    <a class="sigmar-ff" href="/space-ahead/">
-      <img src="/space-ahead/space-ahead-logo.png" alt="Logo" height="36">Space Ahead
-    </a>
+  <nav class="kanit-light">
+    <SiteIdentity />
     <div class="desktop-links">
-      <a class={activePage === "blog" && "active"} href="/space-ahead/blog">Blog</a>
-      <a class={activePage === "tags" && "active"} href="/space-ahead/tags">Tags</a>
-      <a class={activePage === "about" && "active"} href="/space-ahead/about/">About</a>
+      {siteConfig.headerNavLinks?.map((link) => (
+        <a class={activePage === link.href ? "active" : ""} href={import.meta.env.BASE_URL + link.href}>{link.text}</a>
+      ))}
     </div>
     <ThemeSwitcher />
     <Hamburger />
   </nav>
   <div id="mobile-links" class="kanit-regular animated slideOutUp">
-    <a class={activePage === "home" && "active"} href="/space-ahead/">Home 🌎 </a>
-    <a class={activePage === "blog" && "active"} href="/space-ahead/blog">Blog 📕</a>
-    <a class={activePage === "tags" && "active"} href="/space-ahead/tags">Tags 🏷️</a>
-    <a class={activePage === "about" && "active"} href="/space-ahead/about/">About 🚀</a>
+    {siteConfig.headerNavLinks?.map((link) => (
+      <a class={activePage === link.href ? "active" : ""} href={import.meta.env.BASE_URL + link.href}>{link.text}</a>
+    ))}
     <span id="close-menu">❌</span>
   </div>
 </header>
@@ -57,16 +56,13 @@ const { activePage } = Astro.props;
   }
   nav {
     border-radius: 2rem;
+    font-size: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0.25rem 1.25rem;
     gap: 4rem;
     backdrop-filter: blur(72px);
-  }
-  nav a:first-of-type {
-    display: flex;
-    align-items: center;
   }
   .desktop-links {
     display: flex;
@@ -111,14 +107,10 @@ const { activePage } = Astro.props;
   }
 
   html.dark nav {
-    /* border: 1px solid whitesmoke; */
-    background-color: #f0f0f052;
-    box-shadow: 2px 4px 20px #0000000a;
+    box-shadow: 0px 2px 4px #0000000a;
   }
   html.light nav {
-    /* border: 2px solid black; */
-    background-color: #e2d1c352;
-    box-shadow: 2px 4px 20px #0000007a;
+    box-shadow: 0px 2px 4px #0000007a;
   }
 
   @media (orientation: portrait) {

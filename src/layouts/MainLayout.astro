@@ -22,9 +22,9 @@ const { pageTitle, activePage } = Astro.props;
   </head>
   <body>
     <Nav activePage={activePage}/>
-    <section>
+    <main class="max-w mx-auto">
       <slot />
-    </section>
+    </main>
     <Footer/>
   </body>
 </html>

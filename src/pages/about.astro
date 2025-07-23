@@ -1,63 +1,25 @@
 ---
+import { Image } from "astro:assets";
 import MainLayout from "../layouts/MainLayout.astro";
-
-const hobbies = ["Space Exploration", "Writing", "Space Photography"];
+import siteConfig from "../site.config";
+import coverImage from "../assets/images/1.png";
 ---
 
 <MainLayout activePage="about" pageTitle="Space Ahead | About">
   <div class="page-content">
-    <h1 class="sigmar-ff balance-text">About Space Ahead</h1>
+    <h1 class="kanit-bold balance-text">{siteConfig.about?.title}</h1>
+    <Image width={1024} height={600} loading="eager" layout="constrained" class="cover-img" src={coverImage} alt="An Astronaut walking on a terrain"/>
     <p class="kanit-regular balance-text">
-      Space Ahead is 👩‍🚀 <strong>Astro-naut Sid</strong>'s blog. He writes
-      stories about his travels to galaxies far and wide.
+        {siteConfig.about?.text}
     </p>
-
-    <p class="kanit-regular balance-text">
-      Sid is known for his love of adventure and his insatiable curiosity
-      about the universe. He has explored countless planets, discovered new
-      life forms, and made friends with aliens along the way. 🚀
-    </p>
-    <p class="kanit-regular balance-text">
-      His favorite planet is <span class="kanit-bold">Earth</span>, where he
-      once had a close encounter with a friendly alien named <span
-        class="kanit-bold">Astro</span
-      >. Sid's next mission is to explore the <span class="kanit-bold"
-        >Andromeda Galaxy</span
-      > and discover what secrets it holds. 🪐
-    </p>
-    <p class="kanit-regular" style="margin-bottom: 0">My hobbies are:</p>
-    <ul class="hobbies kanit-bold">
-      {hobbies.map((hobby) => <li>{hobby}</li>)}
-    </ul>
   </div>
 </MainLayout>
 <style>
-  .hobbies {
-    display: inline-flex;
-    flex-wrap: wrap;
-    row-gap: 0;
-    column-gap: 1rem;
-    list-style-position: inside;
-    margin-top: 0;
+  h1 {
+    margin-bottom: 3rem;
   }
-  .hobbies li {
-    padding: 0 0 0 1rem;
-  }
-  .hobbies li::marker {
-    content: "🚀 ";
-  }
-  .hobbies li:nth-child(3n)::marker {
-    content: "🪐 ";
-  }
-  .hobbies li:nth-child(3n-1)::marker {
-    content: "🌎 ";
-  }
-  @media (orientation: portrait) {
-    .hobbies {
-      padding-left: 0;
-    }
-    .hobbies li {
-      padding: 0;
-    }
+  .cover-img {
+    border-radius: 4rem;
+    margin-bottom: 2rem;
   }
 </style>

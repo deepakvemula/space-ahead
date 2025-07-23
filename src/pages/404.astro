@@ -1,0 +1,19 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout activePage="404" pageTitle="Space Ahead | 404">
+  <div class="page-content">
+    <h1>404</h1>
+    <p>Page not found</p>
+  </div>
+</MainLayout>
+<style>
+    .page-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+</style>

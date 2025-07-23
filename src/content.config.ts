@@ -1,9 +1,9 @@
 import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
-const postsCollection = defineCollection({
-    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),
-    schema: z.object({
+const blogsCollection = defineCollection({
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blogs" }),
+    schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
         pubDate: z.date(),
@@ -11,7 +11,7 @@ const postsCollection = defineCollection({
         tags: z.array(z.string()).optional(),
         draft: z.boolean().optional(),
         image: z.object({
-            url: z.string(),
+            url: image(),
             alt: z.string().optional()
         })
         .optional(),
@@ -19,5 +19,5 @@ const postsCollection = defineCollection({
 });
 
 export const collections = {
-    posts: postsCollection,
+    blogs: blogsCollection,
 };

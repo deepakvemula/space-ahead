@@ -1,0 +1,57 @@
+---
+import type { GetStaticPathsOptions, Page } from 'astro';
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Pagination from '../../components/Pagination.astro';
+import Subscribe from '../../components/Subscribe.astro';
+import { sortItemsByDateDesc } from '../../utils/helpers';
+import MainLayout from '../../layouts/MainLayout.astro';
+import siteConfig from '../../site.config';
+import PostListPreview from '../../components/PostListPreview.astro';
+import PostCardPreview from '../../components/PostCardPreview.astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+    const blogs = (await getCollection('blogs')).sort(sortItemsByDateDesc);
+    return paginate(blogs, { pageSize: siteConfig.postsPerPage || 2 });
+}
+
+type Props = { page: Page<CollectionEntry<'blogs'>> };
+
+const { page } = Astro.props;
+const allPosts = page.data;
+---
+
+<MainLayout activePage="blog" pageTitle="Space Ahead | Stories">
+  <div class="page-content">
+    <h1 class="sigmar-ff balance-text">
+      All Travel Stories ✨
+    </h1>
+    <p class="kanit-regular balance text">
+      Read about my space adventures, explorations and the aliens I've met on my journeys.
+    </p>
+    <div class="posts-list">
+      {allPosts.map((post) => (
+        <PostListPreview post={post} />
+      ))}
+    </div>
+    <div class="posts-list">
+      {allPosts.map((post) => (
+        <PostCardPreview post={post} />
+      ))}
+    </div>
+    <Pagination page={page} class="my-16 sm:my-24" />
+    <Subscribe class="my-16 sm:my-24" />
+  </div>
+</MainLayout>
+<style>
+  .posts-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  @media (orientation: portrait) {
+    .posts-list {
+      font-size: 0.75rem;
+    }
+  }
+</style>

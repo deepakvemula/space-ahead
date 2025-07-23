@@ -1,21 +1,40 @@
 ---
+import siteConfig from "../site.config";
+import SiteIdentity from "./SiteIdentity.astro";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="kanit-light">
-  <a href="https://github.com/djsiddz" title="Astro-naut Siddhesh Thadeshwar" target="_blank">
-    <span>©️ {currentYear}</span> 👨‍🚀 Siddhesh Thadeshwar
-  </a>
-  <a href="https://github.com/djsiddz/space-ahead" title="Star this on GitHub" target="_blank"
-    >⭐ this on GitHub</a
-  >
-  <a href="/space-ahead/rss.xml" title="Subscribe to RSS Feed" target="_blank"
-    >📻 RSS Feed</a
-  >
+<footer class="kanit-light max-w">
+  <div class="footer-identity">
+    <SiteIdentity logoWidth={64} logoHeight={64} loading="lazy"/>
+    <span>{siteConfig.subtitle}</span>
+    <div class="footer-links">
+      {siteConfig.footerNavLinks?.map((link) => (
+        <a href={link.href} title={link.text}>{link.text}</a>
+      ))}
+      <a href="/space-ahead/rss.xml" title="Subscribe to RSS Feed" target="_blank"
+        >📻 RSS Feed</a
+      >
+    </div>
+  </div>
+  <div class="footer-secondary">
+    <div class="footer-copyright">
+      <a href="https://github.com/djsiddz" target="_blank">
+        <span>©️ {currentYear}</span> 👨‍🚀 {siteConfig.title}. All rights reserved.
+      </a>
+      <a href="https://github.com/djsiddz/space-ahead" title="Star this on GitHub" target="_blank">⭐</a>
+    </div>
+    <div class="footer-social">
+      {siteConfig.socialLinks?.map((link) => (
+        <a href={link.href} title={link.text} target="_blank">{link.text}</a>
+      ))}
+    </div>
+  </div>
 </footer>
 <style>
   footer {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -23,15 +42,60 @@ const currentYear = new Date().getFullYear();
     gap: 1.5rem;
     padding: 1rem 0;
     width: 100%;
+    margin-top: 5rem;
+  }
+  .footer-identity {
+    display: flex;
+    width: calc(100% - 3rem);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .footer-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  .footer-secondary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100% - 3rem);
+  }
+  .footer-copyright {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .footer-social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem
   }
   @media (orientation: portrait) {
     footer {
       font-size: 0.5rem;
       gap: 1rem;
     }
-    footer a:first-child {
-      width: 100%;
-      text-align: center;
+    .footer-links {
+      padding-bottom: 0.75rem;
+      gap: 0.5rem;
+      justify-content: space-around;
+    }
+    .footer-social {
+      gap: 0.75rem;
+    }
+    .footer-secondary {
+      flex-direction: column;
+      gap: 1.5rem;
     }
   }
 </style>

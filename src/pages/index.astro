@@ -1,53 +1,38 @@
 ---
-import PostsList from "../components/PostsList.astro";
-import SpaceEmoji from "../components/SpaceEmoji";
+import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
+import siteConfig from "../site.config";
+import { sortItemsByDateDesc } from "../utils/helpers";
+import PostCardPreview from "../components/PostCardPreview.astro";
 
-const allPosts = await Astro.glob("../pages/posts/*.md")
+const allPosts = (await getCollection('blogs')).sort(sortItemsByDateDesc);
 
-const emojis = [
-  "🚀 To Infinity, And Beyond!",
-  "🌌 In a galaxy far far away...",
-  "⭐ May the force be with you!",
-  "☄️ Game Over",
-  "🌑 The Eagle has landed!",
-  "🛰️ 42",
-  "🤖 Wall-E",
-  "👽 E.T. Phone Home",
-  "🌠 We'll be Counting Stars",
-  "👾 Press Start",
-  "🌍 Powered by Astro & Preact",
-  "🖖 Live long and prosper!",
-  // "☀️ “Time is an illusion. <br/>Lunchtime doubly so.” — Douglas Adams, H2G2",
-];
 ---
 
 <MainLayout activePage="home" pageTitle="Space Ahead - An Astro Blog">
   <div class="jumbo-banner">
     <div class="left">
-      <span class="tag kanit-light">🟡 From galaxies far and wide</span>
-      <h1 class="sigmar-ff balance-text">
-        Travel Stories ✨
+      <span class="tag kanit-light">{siteConfig.hero?.eyebrowText}</span>
+      <h1 class="title sigmar-ff balance-text">
+        {siteConfig.hero?.title}
       </h1>
-      <p class="kanit-regular balance-text sub-text">Written by 🧑‍🚀 Astro-naut Sid!</p>
+      <p class="kanit-regular balance-text sub-text">{siteConfig.hero?.text}</p>
       <div class="buttons">
-        <a href="#posts" class="cta kanit-regular">Read Now 🚀</a>
-        <a href="/space-ahead/about" class="cta secondary-cta kanit-regular">Know More</a>
+        {siteConfig.hero?.actions?.map((action, index) => (
+          <a href={action.href} class={index === 0 ? "cta kanit-regular" : "cta secondary-cta kanit-regular"}>{action.text}</a>
+        ))}
       </div>
     </div>
     <div class="right">
-      <p class="astro-naut">
-        🧑‍🚀
-      </p>
-      <div class="breaking-news">
-        <p class="kanit-regular">👋 Messages from Space:</p>
-        <SpaceEmoji client:load emojis={emojis} />
-      </div>
     </div>
   </div>
   <div id="posts" class="posts-section">
     <h2 class="sigmar-ff">Recent Stories</h2>
-    <PostsList posts={allPosts} />
+    <div class="posts-list">
+      {allPosts.map((post) => (
+        <PostCardPreview post={post} />
+      ))}
+    </div>
   </div>
 </MainLayout>
 <style>
@@ -57,17 +42,15 @@ const emojis = [
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 3rem;
   }
   .jumbo-banner.left, .jumbo-banner.right {
     display:block;
   }
-  .astro-naut {
-    font-size: 16rem;
-    margin-top: 0;
-    margin-bottom: 0;
-    text-align: center;
+  h1.title {
+    line-height: 1.25;
+    margin: 1rem auto;
   }
   .buttons {
     column-gap: 2rem;
@@ -101,24 +84,6 @@ const emojis = [
     color: black;
   }
 
-  .breaking-news {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    text-align: center;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 1rem;
-    padding: 0.75rem 1rem;
-    margin-top: -1rem;
-  }
-  html.light .breaking-news {
-    border: 2px solid rgba(0, 0, 0, 0.2);
-  }
-  .breaking-news > p {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 0.75rem;
-  }
   .tag {
     border-radius: 1rem;
     font-size: 0.5rem;
@@ -149,7 +114,7 @@ const emojis = [
       flex-direction: column;
       gap: 1.5rem;
       padding-bottom: 3rem;
-      padding-top: 0;
+      padding-top: 1rem;
       width: 100%;
     }
     .jumbo-banner.left, .jumbo-banner.right {
@@ -158,9 +123,6 @@ const emojis = [
     p.sub-text {
       margin: 0;
       font-size: 0.75rem;
-    }
-    .astro-naut {
-      font-size: 8rem;
     }
     .buttons {
       flex-wrap: wrap;
@@ -180,9 +142,6 @@ const emojis = [
     .posts-section {
       margin-bottom: 3rem;
       margin-top: 3rem;
-    }
-    .breaking-news {
-      margin-top: -0.5rem;
     }
   }
 </style>

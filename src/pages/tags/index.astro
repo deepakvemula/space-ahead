@@ -1,23 +1,29 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import { getAllTags, getPostsByTag, sortItemsByDateDesc } from "../../utils/helpers";
 
-const allPosts = await Astro.glob("../posts/*.md");
-const uniqueTags = [
-  ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
-];
+const posts = (await getCollection('blogs')).sort(sortItemsByDateDesc);
+const tags = getAllTags(posts).sort((tagA, tagB) => {
+    const postCountTagA = getPostsByTag(posts, tagA.id).length;
+    const postCountTagB = getPostsByTag(posts, tagB.id).length;
+    return postCountTagB - postCountTagA;
+});
 ---
 
-<MainLayout activePage="tags" pageTitle="Space Ahead - Tag Index">
+<MainLayout activePage="tags" pageTitle="Space Ahead - Tags Index">
   <div class="page-content">
     <h1 class="sigmar-ff balance-text">All Tags 🏷️</h1>
     <p class="kanit-regular">Select a tag to view posts related to the tag.</p>
     <div class="tags-container">
       {
-        uniqueTags.map((tag) => (
+        tags.map((tag) => {
+          const postCount = getPostsByTag(posts, tag.id).length;
+          return (
           <p class="tag-card kanit-regular">
-            <a href={"/space-ahead/tags/" + tag}>{tag}</a>
+            <a href={"/space-ahead/tags/" + tag.id}>{tag.name} ({postCount} {postCount > 1 ? " posts" : " post"})</a>
           </p>
-        ))
+        )})
       }
     </div>
   </div>

@@ -4,10 +4,10 @@ import MainLayout from "../../layouts/MainLayout.astro";
 // import Button from '../../components/Button.astro';
 // import Subscribe from '../../components/Subscribe.astro';
 import { sortItemsByDateDesc, createSlugFromTitle } from '../../utils/helpers';
-import "../styles/global.css";
+import "../../styles/global.css";
 
 export async function getStaticPaths() {
-    const posts = (await getCollection('post')).sort(sortItemsByDateDesc);
+    const posts = (await getCollection('blogs')).sort(sortItemsByDateDesc);
     const postCount = posts.length;
     return posts.map((post, index) => ({
         params: { id: post.id },
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
     }));
 }
 
-type Props = { post: CollectionEntry<'post'>; prevPost: CollectionEntry<'post'>; nextPost: CollectionEntry<'post'> };
+type Props = { post: CollectionEntry<'blogs'>; prevPost: CollectionEntry<'blogs'>; nextPost: CollectionEntry<'blogs'> };
 
 const { href } = Astro.url;
 const { post, prevPost, nextPost } = Astro.props;
@@ -49,12 +49,12 @@ const { Content } = await render(post);
     {(prevPost || nextPost) && (
             <div class="my-16 sm:my-24">
                 <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">Read Next</h2>
-                {nextPost && <a class="back-link kanit-bold" href="/space-ahead">Next Post: {nextPost.title}</a>}
-                {prevPost && <a class="back-link kanit-bold" href="/space-ahead">Prev Post: {prevPost.title}</a>}
+                {nextPost && <a class="back-link kanit-bold" href="/space-ahead">Next Post: {nextPost.data.title}</a>}
+                {prevPost && <a class="back-link kanit-bold" href="/space-ahead">Prev Post: {prevPost.data.title}</a>}
             </div>
         )}
-    
-    
+
+
   </div>
 </MainLayout>
 <style>

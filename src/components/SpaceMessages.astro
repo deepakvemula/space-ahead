@@ -1,0 +1,57 @@
+---
+import SpaceEmoji from "./SpaceEmoji";
+const emojis = [
+  "🚀 To Infinity, And Beyond!",
+  "🌌 In a galaxy far far away...",
+  "⭐ May the force be with you!",
+  "☄️ Game Over",
+  "🌑 The Eagle has landed!",
+  "🛰️ 42",
+  "🤖 Wall-E",
+  "👽 E.T. Phone Home",
+  "🌠 We'll be Counting Stars",
+  "👾 Press Start",
+  "🌍 Powered by Astro & Preact",
+  "🖖 Live long and prosper!",
+  "☀️ “Time is an illusion. <br/>Lunchtime doubly so.” — Douglas Adams, H2G2",
+];
+---
+<p class="astro-naut">🧑‍🚀</p>
+<div class="breaking-news">
+    <p class="kanit-regular">👋 Messages from Space:</p>
+    <SpaceEmoji client:load emojis={emojis} />
+</div>
+<style>
+  .astro-naut {
+    font-size: 16rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .breaking-news {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    margin-top: -1rem;
+  }
+  html.light .breaking-news {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+  }
+  .breaking-news > p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+  }
+  @media (orientation: portrait) {
+    .astro-naut {
+      font-size: 8rem;
+    }
+    .breaking-news {
+      margin-top: -0.5rem;
+    }
+  }
+</style>

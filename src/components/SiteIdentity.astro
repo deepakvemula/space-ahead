@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import siteConfig from "../site.config";
+
+type SiteIdentityProps = {
+  logoWidth?: number;
+  logoHeight?: number;
+  loading?: "eager" | "lazy";
+};
+
+const { logoWidth = 32, logoHeight = 32, loading = "eager" }: SiteIdentityProps = Astro.props;
+---
+<div class="site-identity">
+    <Image src="/space-ahead/space-ahead-logo.png" alt="Logo" width={logoWidth} height={logoHeight} loading={loading}/>
+    <span class="kanit-regular">{siteConfig.title}</span>
+</div>
+<style>
+  .site-identity {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    gap: 0.5rem;
+  }
+  @media (orientation: portrait) {
+    .site-identity {
+      font-size: 1rem;
+    }
+  }
+</style>
