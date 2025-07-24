@@ -8,6 +8,7 @@ import MainLayout from '../../../layouts/MainLayout.astro';
 import Pagination from '../../../components/Pagination.astro';
 import Subscribe from '../../../components/Subscribe.astro';
 import PostCardPreview from '../../../components/PostCardPreview.astro';
+import PostListPreview from '../../../components/PostListPreview.astro';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
     const posts = (await getCollection('blogs')).sort(sortItemsByDateDesc);
@@ -27,7 +28,7 @@ type Props = { page: Page<CollectionEntry<'blogs'>> };
 const { page } = Astro.props;
 const blog = page.data;
 const params = Astro.params;
-const allPosts = await getCollection('blogs');
+const allPosts = await getCollection('blogs', (post) => post.data.tags?.includes(params.id));
 const allTags = getAllTags(allPosts);
 const currentTag = allTags.find((tag) => {
     return tag.id === params.id;
@@ -40,8 +41,8 @@ const currentTag = allTags.find((tag) => {
       Posts tagged with <span class="sigmar-ff">{currentTag?.name}</span>
     </h1>
     <div class="posts-list">
-      {allPosts.map((post) => (
-        <PostCardPreview post={post} />
+      {blog.map((post) => (
+        <PostListPreview post={post} />
       ))}
     </div>
     <Pagination page={page} class="my-16 sm:my-24" />
@@ -51,9 +52,14 @@ const currentTag = allTags.find((tag) => {
 <style>
   .posts-list {
     display: flex;
-    flex-wrap: wrap;
+    text-align: left;
+    flex-direction: column;
     gap: 2rem;
-    justify-content: center;
+    margin-bottom: 4rem;
+    max-width: fit-content;
+  }
+  h1 {
+    margin-bottom: 2rem;
   }
   @media (orientation: portrait) {
     .posts-list {
