@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import MainLayout from "../layouts/MainLayout.astro";
+import siteConfig from "../site.config";
+import coverImage from "../assets/images/1.png";
+---
+
+<MainLayout activePage="about" pageTitle="Space Ahead | Contact">
+  <div class="page-content">
+    <h1 class="sigmar-ff text-balance">{siteConfig.contactInfo?.title}</h1>
+    <!-- <Image width={1024} height={600} loading="eager" layout="constrained" class="cover-img" src={coverImage} alt="An Astronaut walking on a terrain"/> -->
+    <p class="kanit-regular text-balance">
+        {siteConfig.contactInfo?.text}
+    </p>
+    <p class="kanit-regular text-balance">
+      {siteConfig.contactInfo?.email?.text}<br/>
+      <a href={siteConfig.contactInfo?.email?.href} class="kanit-regular text-balance">
+        {siteConfig.contactInfo?.email?.email}
+      </a>
+    </p>
+    <p class="kanit-regular text-balance">
+      Social Profiles:
+      {siteConfig.contactInfo?.socialProfiles?.map((profile) => (
+        <a href={profile.href} class="kanit-regular text-balance links">{profile.text}</a>
+      ))}
+    </p>
+  </div>
+</MainLayout>
+<style>
+  h1 {
+    margin-bottom: 3rem;
+  }
+  .cover-img {
+    border-radius: 4rem;
+    margin-bottom: 2rem;
+  }
+  .links {
+    margin-left: 1rem;
+  }
+</style>

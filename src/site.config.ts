@@ -22,6 +22,20 @@ export type About = {
     text?: string;
 };
 
+export type ContactInfo = {
+    title?: string;
+    text?: string;
+    email?: {
+        text?: string;
+        href?: string;
+        email?: string;
+    };
+    socialProfiles?: {
+        text?: string;
+        href?: string;
+    }[];
+};
+
 export type Subscribe = {
     title?: string;
     text?: string;
@@ -40,6 +54,7 @@ export type SiteConfig = {
     socialLinks?: Link[];
     hero?: Hero;
     about?: About;
+    contactInfo?: ContactInfo;
     subscribe?: Subscribe;
     postsPerPage?: number;
     projectsPerPage?: number;
@@ -122,6 +137,29 @@ const siteConfig: SiteConfig = {
     about: {
         title: 'About',
         text: 'Space Ahead is a blog about space exploration and travel. It is written by Astro-naut Sid, a space explorer at Beyond Earth. Sid is known for his love of adventure and his insatiable curiosity about the universe. He has explored countless planets, discovered new life forms, and made friends with aliens along the way. 🚀',
+    },
+    contactInfo: {
+        title: 'Contact',
+        text: "Hi! Whether you have a question, a suggestion, or just want to share your thoughts, I'm all ears. Feel free to get in touch through any of the methods below:",
+        email: {
+            text: "Drop me an email and I’ll do my best to respond as soon as possible.",
+            href: "mailto:example@example.com",
+            email: "example@example.com"
+        },
+        socialProfiles: [
+            {
+                text: "LinkedIn",
+                href: "https://www.linkedin.com/"
+            },
+            {
+                text: "Peerlist",
+                href: "https://www.peerlist.io/"
+            },
+            {
+                text: "GitHub",
+                href: "https://github.com/"
+            }
+        ]
     },
     subscribe: {
         title: 'Subscribe to Space Ahead',
