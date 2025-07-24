@@ -1,26 +1,21 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
 
 type Props = { post: CollectionEntry<'blogs'> };
 const { post } = Astro.props;
 const { title, pubDate, description, image } = post.data;
 ---
-<a class="kanit-bold balance-text" href={"/space-ahead/blog/"+post.id}>
-  <div class="post-card">
+<a class="kanit-bold text-balance" href={"/space-ahead/blog/"+post.id}>
+  <div class="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-4">
     {image && image.url && <>
-      <Image src={image.url} alt={image.alt || ''} width={360} height={202} />
-      <br/>
+      <Image class="rounded-2xl" src={image.url} alt={image.alt || ''} width={180} height={101} />
     </>}
-    {title}<br/>
-    <span class="kanit-light pub-date">{new Date(pubDate).toDateString()}</span><br/>
-    {description && <span class="kanit-light">{description}</span>}
+    <div class="flex flex-col">
+      <span class="mb-1">{title}</span>
+      <FormattedDate date={new Date(pubDate)} />
+      {description && <span class="kanit-light">{description}</span>}
+    </div>
   </div>
 </a>
-<style>
-  @media (orientation: portrait) {
-    .pub-date {
-      font-size: 0.5rem;
-    }
-  }
-</style>

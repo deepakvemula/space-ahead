@@ -7,9 +7,9 @@ import coverImage from "../assets/images/1.png";
 
 <MainLayout activePage="about" pageTitle="Space Ahead | About">
   <div class="page-content">
-    <h1 class="kanit-bold balance-text">{siteConfig.about?.title}</h1>
+    <h1 class="sigmar-ff text-balance">{siteConfig.about?.title}</h1>
     <Image width={1024} height={600} loading="eager" layout="constrained" class="cover-img" src={coverImage} alt="An Astronaut walking on a terrain"/>
-    <p class="kanit-regular balance-text">
+    <p class="kanit-regular text-balance">
         {siteConfig.about?.text}
     </p>
   </div>
@@ -21,5 +21,7 @@ import coverImage from "../assets/images/1.png";
   .cover-img {
     border-radius: 4rem;
     margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>

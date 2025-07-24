@@ -4,7 +4,7 @@ import SiteIdentity from "./SiteIdentity.astro";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="kanit-light max-w">
+<footer class="kanit-light">
   <div class="footer-identity">
     <SiteIdentity logoWidth={64} logoHeight={64} loading="lazy"/>
     <span>{siteConfig.subtitle}</span>
@@ -33,16 +33,8 @@ const currentYear = new Date().getFullYear();
 </footer>
 <style>
   footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
     font-size: 0.75rem;
-    gap: 1.5rem;
     padding: 1rem 0;
-    width: 100%;
-    margin-top: 5rem;
   }
   .footer-identity {
     display: flex;

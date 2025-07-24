@@ -29,12 +29,12 @@ const { Content } = await render(post);
 
 <MainLayout>
   <div class="page-content">
-    <h1 class="sigmar-ff balance-text">{title}</h1>
-    <p class="pub-details text-center kanit-regular balance-text">
+    <h1 class="sigmar-ff text-balance">{title}</h1>
+    <p class="pub-details text-center kanit-regular text-balance">
       by 🧑‍🚀 <span class="kanit-bold">{author}</span> on <span
         class="kanit-bold">{new Date(pubDate).toDateString()}</span
     </p>
-    <p class="pub-details kanit-regular text-center balance-text">
+    <p class="pub-details kanit-regular text-center text-balance">
       Tagged: {tags.map(tag => <a class="tag-card kanit-regular" href={"/space-ahead/tags/" + tag}>{tag}</a>)}
     </p>
     <img
@@ -42,7 +42,7 @@ const { Content } = await render(post);
       src={image.url}
       alt={image.alt}
     />
-    <div class="kanit-regular balance-text">
+    <div class="kanit-regular text-balance">
       <slot />
     </div>
     <a class="back-link kanit-bold" href="/space-ahead">⬅️ Back to All Stories</a>

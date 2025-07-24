@@ -101,8 +101,8 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        eyebrowText: '🚀 Current Location: Kepler 10b',
-        title: 'Travel Stories ✨',
+        eyebrowText: '🧑‍🚀 Galaxy of Adventures',
+        title: 'Space Ahead ✨',
         text: "Written by Astro-naut Sid, a space explorer at Beyond Earth.",
         image: {
             src: '/hero.jpeg',
@@ -114,8 +114,8 @@ const siteConfig: SiteConfig = {
                 href: '/blog'
             },
             {
-                text: 'Contact Me',
-                href: '/contact'
+                text: 'Subscribe',
+                href: '#subscribe'
             }
         ]
     },

@@ -1,4 +1,4 @@
----
+ ---
 import siteConfig from "../site.config";
 import Hamburger from "./Hamburger.astro";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
@@ -42,24 +42,10 @@ const { activePage } = Astro.props;
 </script>
 
 <style>
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 0.5rem;
-    margin: 1rem;
-    font-size: 1rem;
-    column-gap: 0.5rem;
-    position: fixed;
-    z-index: 20;
-    width: calc(100% - 3rem);
-  }
+
   nav {
     border-radius: 2rem;
     font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 0.25rem 1.25rem;
     gap: 4rem;
     backdrop-filter: blur(72px);

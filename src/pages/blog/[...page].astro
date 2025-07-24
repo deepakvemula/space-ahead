@@ -20,19 +20,15 @@ const { page } = Astro.props;
 const allPosts = page.data;
 ---
 
-<MainLayout activePage="blog" pageTitle="Space Ahead | Stories">
+<MainLayout activePage="blog" pageTitle="Space Ahead | Travel Stories ✨ - Blog Archive">
   <div class="page-content">
-    <h1 class="sigmar-ff balance-text">
-      All Travel Stories ✨
+    <h1 class="sigmar-ff text-balance">
+      Blog
     </h1>
     <p class="kanit-regular balance text">
       Read about my space adventures, explorations and the aliens I've met on my journeys.
     </p>
-    <div class="posts-list">
-      {allPosts.map((post) => (
-        <PostListPreview post={post} />
-      ))}
-    </div>
+
     <div class="posts-list">
       {allPosts.map((post) => (
         <PostCardPreview post={post} />
@@ -45,9 +41,11 @@ const allPosts = page.data;
 <style>
   .posts-list {
     display: flex;
-    flex-wrap: wrap;
+    text-align: left;
+    flex-direction: column;
     gap: 2rem;
-    justify-content: center;
+    margin-bottom: 4rem;
+    max-width: fit-content;
   }
   @media (orientation: portrait) {
     .posts-list {

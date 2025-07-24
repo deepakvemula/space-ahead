@@ -4,6 +4,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 import siteConfig from "../site.config";
 import { sortItemsByDateDesc } from "../utils/helpers";
 import PostCardPreview from "../components/PostCardPreview.astro";
+import Subscribe from "../components/Subscribe.astro";
 
 const allPosts = (await getCollection('blogs')).sort(sortItemsByDateDesc);
 
@@ -13,10 +14,10 @@ const allPosts = (await getCollection('blogs')).sort(sortItemsByDateDesc);
   <div class="jumbo-banner">
     <div class="left">
       <span class="tag kanit-light">{siteConfig.hero?.eyebrowText}</span>
-      <h1 class="title sigmar-ff balance-text">
+      <h1 class="title sigmar-ff text-balance">
         {siteConfig.hero?.title}
       </h1>
-      <p class="kanit-regular balance-text sub-text">{siteConfig.hero?.text}</p>
+      <p class="kanit-regular text-balance sub-text">{siteConfig.hero?.text}</p>
       <div class="buttons">
         {siteConfig.hero?.actions?.map((action, index) => (
           <a href={action.href} class={index === 0 ? "cta kanit-regular" : "cta secondary-cta kanit-regular"}>{action.text}</a>
@@ -27,13 +28,14 @@ const allPosts = (await getCollection('blogs')).sort(sortItemsByDateDesc);
     </div>
   </div>
   <div id="posts" class="posts-section">
-    <h2 class="sigmar-ff">Recent Stories</h2>
+    <h2 class="sigmar-ff text-balance mb-8">Recent Stories</h2>
     <div class="posts-list">
       {allPosts.map((post) => (
         <PostCardPreview post={post} />
       ))}
     </div>
   </div>
+  <Subscribe class="my-16 sm:my-24" />
 </MainLayout>
 <style>
   .jumbo-banner {
@@ -96,7 +98,7 @@ const allPosts = (await getCollection('blogs')).sort(sortItemsByDateDesc);
     justify-content: center;
     margin-top: 6rem;
     margin-bottom: 6rem;
-    width: 100%;
+    /* width: 100%; */
   }
   html.dark .tag {
     /* border: 1px solid var(--darkText); */
