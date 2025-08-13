@@ -64,7 +64,7 @@ const siteConfig: SiteConfig = {
     website: 'https://example.com',
     title: 'Space Ahead',
     subtitle: 'Astro v5 theme for personal blog',
-    description: 'Astro.js and Tailwind CSS theme for personal blog created by @super_siddy',
+    description: 'Astro.js and Tailwind CSS theme for personal blog created by Siddhesh Thadeshwar',
     image: {
         src: '/space-ahead-preview.jpg',
         alt: 'Space Ahead - Astro and Tailwind CSS theme'
@@ -89,16 +89,16 @@ const siteConfig: SiteConfig = {
     ],
     footerNavLinks: [
         {
-            text: '🧑‍🚀 About',
+            text: 'About',
             href: '/space-ahead/about'
         },
         {
-            text: '📞 Contact',
+            text: 'Contact',
             href: '/space-ahead/contact'
         },
         {
-            text: '⬇️ Download Theme',
-            href: 'https://github.com/djsiddz/space-ahead'
+            text: 'RSS Feed',
+            href: '/space-ahead/rss.xml'
         }
     ],
     socialLinks: [
@@ -120,7 +120,7 @@ const siteConfig: SiteConfig = {
         title: 'Space Ahead ✨',
         text: "Written by Astro-naut Sid, a space explorer at Beyond Earth.",
         image: {
-            src: '/hero.jpeg',
+            src: '/assets/images/pixeltrue-space-discovery.svg',
             alt: 'A person sitting at a desk in front of a computer'
         },
         actions: [

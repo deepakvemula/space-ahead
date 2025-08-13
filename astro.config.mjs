@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import swup from "@swup/astro";
 import preact from "@astrojs/preact";
 
@@ -8,15 +8,22 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://djsiddz.github.io",
   base: "/space-ahead",
-  integrations: [swup({ theme: ["overlay", { direction: "to-top"}], cache: true, progress: true }), preact()],
+  integrations: [
+    swup({
+      theme: ["overlay", { direction: "to-top" }],
+      cache: true,
+      progress: true,
+    }),
+    preact(),
+  ],
 
   image: {
-    responsiveStyles: true
+    responsiveStyles: true,
   },
 
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
 });
 
 //swup theme variations:
