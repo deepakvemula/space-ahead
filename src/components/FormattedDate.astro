@@ -4,22 +4,12 @@ type Props = { date: Date };
 const { date } = Astro.props;
 ---
 
-<time class="kanit-light" datetime={date.toISOString()}>
-    {
-        date.toLocaleDateString('en-us', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        })
-    }
+<time class="text-xs" datetime={date.toISOString()}>
+  {
+    date.toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  }
 </time>
-<style>
-    time {
-        font-size: 0.75rem;
-    }
-    @media (orientation: portrait) {
-        time {
-            font-size: 0.5rem;
-        }
-    }
-</style>

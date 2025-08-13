@@ -6,24 +6,24 @@ type SiteIdentityProps = {
   logoWidth?: number;
   logoHeight?: number;
   loading?: "eager" | "lazy";
+  textSize?: "text-base" | "text-xl";
 };
 
-const { logoWidth = 32, logoHeight = 32, loading = "eager" }: SiteIdentityProps = Astro.props;
+const {
+  logoWidth = 32,
+  logoHeight = 32,
+  loading = "eager",
+  textSize = "text-base",
+}: SiteIdentityProps = Astro.props;
 ---
-<div class="site-identity">
-    <Image src="/space-ahead/space-ahead-logo.png" alt="Logo" width={logoWidth} height={logoHeight} loading={loading}/>
-    <span class="sigmar-ff">{siteConfig.title}</span>
+
+<div class="flex items-center gap-2">
+  <Image
+    src="/space-ahead/space-ahead-logo.png"
+    alt="Logo"
+    width={logoWidth}
+    height={logoHeight}
+    loading={loading}
+  />
+  <span class:list={["sigmar-ff", textSize]}>{siteConfig.title}</span>
 </div>
-<style>
-  .site-identity {
-    display: flex;
-    align-items: center;
-    vertical-align: middle;
-    gap: 0.5rem;
-  }
-  @media (orientation: portrait) {
-    .site-identity {
-      font-size: 1rem;
-    }
-  }
-</style>

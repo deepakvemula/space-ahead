@@ -1,13 +1,18 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
+import {
+  getAllTags,
+  getPostsByTag,
+  sortItemsByDateDesc,
+} from "../../utils/helpers";
 import { getCollection } from "astro:content";
-import { getAllTags, getPostsByTag, sortItemsByDateDesc } from "../../utils/helpers";
+import Button from "../../components/Button.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
 
-const posts = (await getCollection('blogs')).sort(sortItemsByDateDesc);
+const posts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
 const tags = getAllTags(posts).sort((tagA, tagB) => {
-    const postCountTagA = getPostsByTag(posts, tagA.id).length;
-    const postCountTagB = getPostsByTag(posts, tagB.id).length;
-    return postCountTagB - postCountTagA;
+  const postCountTagA = getPostsByTag(posts, tagA.id).length;
+  const postCountTagB = getPostsByTag(posts, tagB.id).length;
+  return postCountTagB - postCountTagA;
 });
 ---
 
@@ -15,31 +20,17 @@ const tags = getAllTags(posts).sort((tagA, tagB) => {
   <div class="page-content">
     <h1 class="sigmar-ff text-balance">Tags</h1>
     <p class="kanit-regular">Select a tag to view posts related to the tag.</p>
-    <div class="tags-container">
+    <div class="flex flex-wrap items-center justify-center gap-4">
       {
         tags.map((tag) => {
           const postCount = getPostsByTag(posts, tag.id).length;
           return (
-          <p class="tag-card kanit-regular">
-            <a href={"/space-ahead/tags/" + tag.id}>{tag.name} ({postCount} {postCount > 1 ? " posts" : " post"})</a>
-          </p>
-        )})
+            <Button href={"/space-ahead/tags/" + tag.id} class="px-4! m-2">
+              {tag.name} ({postCount})
+            </Button>
+          );
+        })
       }
     </div>
   </div>
 </MainLayout>
-<style>
-  .tags-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .tag-card {
-    display: flex;
-    width: max-content;
-    padding: 0.25rem 1rem;
-    margin: 1rem;
-    border: 1px solid whitesmoke;
-    border-radius: 1rem;
-    font-size: 0.75rem;
-  }
-</style>

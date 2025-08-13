@@ -3,25 +3,24 @@ import { Image } from "astro:assets";
 import MainLayout from "../layouts/MainLayout.astro";
 import siteConfig from "../site.config";
 import coverImage from "../assets/images/1.png";
+import Subscribe from "../components/Subscribe.astro";
 ---
 
 <MainLayout activePage="about" pageTitle="Space Ahead | About">
-  <div class="page-content">
-    <h1 class="sigmar-ff text-balance">{siteConfig.about?.title}</h1>
-    <Image width={1024} height={600} loading="eager" layout="constrained" class="cover-img" src={coverImage} alt="An Astronaut walking on a terrain"/>
-    <p class="kanit-regular text-balance">
-        {siteConfig.about?.text}
+  <div class="flex flex-col items-center page-content">
+    <h1 class="sigmar-ff text-justify">{siteConfig.about?.title}</h1>
+    <Image
+      width={1024}
+      height={600}
+      loading="eager"
+      layout="constrained"
+      class="rounded-4xl mb-8 mx-auto"
+      src={coverImage}
+      alt="An Astronaut walking on a terrain"
+    />
+    <p class="kanit-light text-justify">
+      {siteConfig.about?.text}
     </p>
+    <Subscribe class="my-16" />
   </div>
 </MainLayout>
-<style>
-  h1 {
-    margin-bottom: 3rem;
-  }
-  .cover-img {
-    border-radius: 4rem;
-    margin-bottom: 2rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-</style>

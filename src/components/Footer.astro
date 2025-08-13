@@ -4,89 +4,78 @@ import SiteIdentity from "./SiteIdentity.astro";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="kanit-light">
-  <div class="footer-identity">
-    <SiteIdentity logoWidth={64} logoHeight={64} loading="lazy"/>
+<footer class="kanit-light text-xs sm:text-sm">
+  <div
+    class="footer-identity flex flex-col items-center justify-center pb-3 min-w-full"
+  >
+    <a href={import.meta.env.BASE_URL + "/"}>
+      <SiteIdentity
+        logoWidth={48}
+        logoHeight={48}
+        loading="lazy"
+        textSize="text-xl"
+      />
+    </a>
     <span>{siteConfig.subtitle}</span>
-    <div class="footer-links">
-      {siteConfig.footerNavLinks?.map((link) => (
-        <a href={link.href} title={link.text}>{link.text}</a>
-      ))}
-      <a href="/space-ahead/rss.xml" title="Subscribe to RSS Feed" target="_blank"
-        >📻 RSS Feed</a
+    <div
+      class="flex flex-row items-center justify-around sm:justify-center gap-2 sm:gap-6 pt-6 pb-3 sm:px-6 text-center"
+    >
+      {
+        siteConfig.footerNavLinks?.map((link) => (
+          <a href={link.href} title={link.text}>
+            {link.text}
+          </a>
+        ))
+      }
+      <a
+        href="https://github.com/djsiddz/space-ahead"
+        title="Download Space Ahead Astro Theme"
+        target="_blank">Download Theme</a
       >
     </div>
   </div>
-  <div class="footer-secondary">
-    <div class="footer-copyright">
+  <div
+    class="footer-secondary flex flex-col sm:flex-row items-center justify-between gap-6 min-w-full"
+  >
+    <div
+      class="flex flex-row gap-3 sm:gap-4 items-center justify-start text-balance"
+    >
       <a href="https://github.com/djsiddz" target="_blank">
-        <span>©️ {currentYear}</span> 👨‍🚀 {siteConfig.title}. All rights reserved.
+        <span>&copy; {currentYear}</span>
+        {siteConfig.title}. All rights reserved.
       </a>
-      <a href="https://github.com/djsiddz/space-ahead" title="Star this on GitHub" target="_blank">⭐</a>
+      <a
+        href="https://github.com/djsiddz/space-ahead"
+        title="Star this on GitHub"
+        target="_blank">⭐</a
+      >
     </div>
-    <div class="footer-social">
-      {siteConfig.socialLinks?.map((link) => (
-        <a href={link.href} title={link.text} target="_blank">{link.text}</a>
-      ))}
+    <div class="flex flex-row gap-3 sm:gap-4 items-center justify-end-safe">
+      {
+        siteConfig.socialLinks?.map((link) => (
+          <a href={link.href} title={link.text} target="_blank">
+            {link.text}
+          </a>
+        ))
+      }
     </div>
   </div>
 </footer>
 <style>
   footer {
-    font-size: 0.75rem;
+    width: calc(100% - 3rem);
+    /* font-size: 0.75rem; */
     padding: 1rem 0;
   }
   .footer-identity {
-    display: flex;
-    width: calc(100% - 3rem);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 0.75rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  .footer-links {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    padding-bottom: 1.5rem;
-    padding-top: 1.5rem;
-  }
-  .footer-secondary {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: calc(100% - 3rem);
-  }
-  .footer-copyright {
-    display: flex;
-    gap: 0.75rem;
-  }
-  .footer-social {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: end;
-    gap: 1rem
   }
   @media (orientation: portrait) {
     footer {
-      font-size: 0.5rem;
+      /* font-size: 0.5rem; */
       gap: 1rem;
     }
-    .footer-links {
-      padding-bottom: 0.75rem;
-      gap: 0.5rem;
-      justify-content: space-around;
-    }
-    .footer-social {
-      gap: 0.75rem;
-    }
     .footer-secondary {
-      flex-direction: column;
       gap: 1.5rem;
     }
   }

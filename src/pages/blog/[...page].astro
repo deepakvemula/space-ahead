@@ -1,55 +1,41 @@
 ---
-import type { GetStaticPathsOptions, Page } from 'astro';
-import { type CollectionEntry, getCollection } from 'astro:content';
-import Pagination from '../../components/Pagination.astro';
-import Subscribe from '../../components/Subscribe.astro';
-import { sortItemsByDateDesc } from '../../utils/helpers';
-import MainLayout from '../../layouts/MainLayout.astro';
-import siteConfig from '../../site.config';
-import PostListPreview from '../../components/PostListPreview.astro';
-import PostCardPreview from '../../components/PostCardPreview.astro';
+import type { GetStaticPathsOptions, Page } from "astro";
+import { type CollectionEntry, getCollection } from "astro:content";
+import Pagination from "../../components/Pagination.astro";
+import Subscribe from "../../components/Subscribe.astro";
+import { sortItemsByDateDesc } from "../../utils/helpers";
+import MainLayout from "../../layouts/MainLayout.astro";
+import siteConfig from "../../site.config";
+import PostCardPreview from "../../components/PostCardPreview.astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-    const blogs = (await getCollection('blogs')).sort(sortItemsByDateDesc);
-    return paginate(blogs, { pageSize: siteConfig.postsPerPage || 2 });
+  const blogs = (await getCollection("blogs")).sort(sortItemsByDateDesc);
+  return paginate(blogs, { pageSize: siteConfig.postsPerPage || 2 });
 }
 
-type Props = { page: Page<CollectionEntry<'blogs'>> };
+type Props = { page: Page<CollectionEntry<"blogs">> };
 
 const { page } = Astro.props;
 const allPosts = page.data;
 ---
 
-<MainLayout activePage="blog" pageTitle="Space Ahead | Travel Stories ✨ - Blog Archive">
-  <div class="page-content">
-    <h1 class="sigmar-ff text-balance">
-      Blog
-    </h1>
-    <p class="kanit-regular balance text">
-      Read about my space adventures, explorations and the aliens I've met on my journeys.
+<MainLayout
+  activePage="blog"
+  pageTitle="Space Ahead | Travel Stories ✨ - Blog Archive"
+>
+  <div class="page-content py-8 text-center">
+    <h1 class="sigmar-ff">Blog</h1>
+    <p class="font-light text-balance">
+      Read about my space adventures, explorations and the aliens I've met on my
+      journeys.
     </p>
 
-    <div class="posts-list">
-      {allPosts.map((post) => (
-        <PostCardPreview post={post} />
-      ))}
+    <div
+      class="flex flex-col text-left gap-8 mb-16 text-sm sm:text-base max-w-fit mx-auto"
+    >
+      {allPosts.map((post) => <PostCardPreview post={post} />)}
     </div>
     <Pagination page={page} class="my-16 sm:my-24" />
-    <Subscribe class="my-16 sm:my-24" />
+    <Subscribe class="my-16" />
   </div>
 </MainLayout>
-<style>
-  .posts-list {
-    display: flex;
-    text-align: left;
-    flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 4rem;
-    max-width: fit-content;
-  }
-  @media (orientation: portrait) {
-    .posts-list {
-      font-size: 0.75rem;
-    }
-  }
-</style>

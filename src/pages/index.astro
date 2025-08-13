@@ -5,145 +5,67 @@ import siteConfig from "../site.config";
 import { sortItemsByDateDesc } from "../utils/helpers";
 import PostCardPreview from "../components/PostCardPreview.astro";
 import Subscribe from "../components/Subscribe.astro";
+import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
+import heroImage from "../assets/images/pixeltrue-space-discovery.svg";
 
-const allPosts = (await getCollection('blogs')).sort(sortItemsByDateDesc);
-
+const allPosts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
 ---
 
-<MainLayout activePage="home" pageTitle="Space Ahead - An Astro Blog">
-  <div class="jumbo-banner">
-    <div class="left">
-      <span class="tag kanit-light">{siteConfig.hero?.eyebrowText}</span>
-      <h1 class="title sigmar-ff text-balance">
+<MainLayout
+  activePage="home"
+  pageTitle="Space Ahead - An Astro Personal Blog Template"
+>
+  <div
+    class="jumbo-banner flex flex-col sm:flex-row sm:items-center sm:justify-between w-full px-4 py-8 sm:py-12 gap-6"
+  >
+    <div class="w-full sm:w-fit">
+      <span
+        class="tag rounded-full text-xs px-2 py-1 border border-gray-500 kanit-light"
+        >{siteConfig.hero?.eyebrowText}</span
+      >
+      <h1 class="sigmar-ff leading-tight text-balance">
         {siteConfig.hero?.title}
       </h1>
-      <p class="kanit-regular text-balance sub-text">{siteConfig.hero?.text}</p>
-      <div class="buttons">
-        {siteConfig.hero?.actions?.map((action, index) => (
-          <a href={action.href} class={index === 0 ? "cta kanit-regular" : "cta secondary-cta kanit-regular"}>{action.text}</a>
-        ))}
+      <p class="kanit-regular text-balance text-xs sm:text-base">
+        {siteConfig.hero?.text}
+      </p>
+      <div
+        class="flex flex-wrap items-center text-xs sm:text-base gap-x-2 gap-y-8 mt-3 sm:mt-12"
+      >
+        {
+          siteConfig.hero?.actions?.map((action, index) => (
+            <Button
+              href={action.href}
+              class={index === 0 ? "space-btn-filled" : "space-btn-outlined"}
+            >
+              {action.text}
+            </Button>
+          ))
+        }
       </div>
     </div>
-    <div class="right">
+    <div class="w-full sm:w-fit sm:max-w-1/3">
+      <!-- {siteConfig.hero?.image && <Image src={siteConfig.hero?.image?.src} alt={siteConfig.hero?.image?.alt || ""} inferSize={true} />} -->
+      <Image
+        class="cover-img"
+        src={heroImage}
+        alt={"Astronaut in space"}
+        width={400}
+        height={300}
+      />
     </div>
   </div>
-  <div id="posts" class="posts-section">
-    <h2 class="sigmar-ff text-balance mb-8">Recent Stories</h2>
-    <div class="posts-list">
-      {allPosts.map((post) => (
-        <PostCardPreview post={post} />
-      ))}
+  <div class="page-content">
+    <div
+      id="posts"
+      class="my-4 flex flex-col items-center justify-center sm:my-24 max-w-3xl"
+    >
+      <h2 class="sigmar-ff text-balance mb-8">Recent Stories</h2>
+      <div class="flex flex-col gap-8 max-w-full text-left">
+        {allPosts.map((post) => <PostCardPreview post={post} />)}
+      </div>
     </div>
+    <Subscribe class="my-16" />
   </div>
-  <Subscribe class="my-16 sm:my-24" />
 </MainLayout>
-<style>
-  .jumbo-banner {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-  }
-  .jumbo-banner.left, .jumbo-banner.right {
-    display:block;
-  }
-  h1.title {
-    line-height: 1.25;
-    margin: 1rem auto;
-  }
-  .buttons {
-    column-gap: 2rem;
-    display: flex;
-    margin-top: 3rem;
-  }
-  .cta {
-    padding: 0.5rem 2rem;
-    font: 2rem;
-    border-radius: 2rem;
-    cursor: pointer;
-  }
-  html.dark .cta {
-    background-color: whitesmoke;
-    border: 1px solid whitesmoke;
-    color: black;
-  }
-  html.dark .cta.secondary-cta {
-    background-color: transparent;
-    border: 1px solid whitesmoke;
-    color: whitesmoke;
-  }
-  html.light .cta {
-    background-color: black;
-    border: 1px solid black;
-    color: whitesmoke;
-  }
-  html.light .cta.secondary-cta {
-    background-color: transparent;
-    border: 1px solid black;
-    color: black;
-  }
-
-  .tag {
-    border-radius: 1rem;
-    font-size: 0.5rem;
-    padding: 0.25rem 0.5rem;
-  }
-  .posts-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 6rem;
-    margin-bottom: 6rem;
-    /* width: 100%; */
-  }
-  html.dark .tag {
-    /* border: 1px solid var(--darkText); */
-    border: 1px solid grey;
-  }
-  html.light .tag {
-    /* border: 1px solid var(--lightText); */
-    border: 1px solid grey;
-  }
-  h1 {
-    padding-top: 0;
-  }
-  @media (orientation: portrait) {
-    .jumbo-banner {
-      flex-direction: column;
-      gap: 1.5rem;
-      padding-bottom: 3rem;
-      padding-top: 1rem;
-      width: 100%;
-    }
-    .jumbo-banner.left, .jumbo-banner.right {
-      width: 100%;
-    }
-    p.sub-text {
-      margin: 0;
-      font-size: 0.75rem;
-    }
-    .buttons {
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: 0.75rem;
-      column-gap: 0.5rem;
-      row-gap: 0.5rem;
-      font-size: 0.75rem;
-    }
-    .cta {
-      padding: 0.5rem 1rem;
-    }
-    .cta.secondary-cta {
-      /* opacity: 0.5; */
-      padding: 0.5rem 1rem;
-    }
-    .posts-section {
-      margin-bottom: 3rem;
-      margin-top: 3rem;
-    }
-  }
-</style>

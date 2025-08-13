@@ -1,26 +1,28 @@
- ---
-import siteConfig from "../site.config";
+---
+import siteConfig, { type Link } from "../site.config";
 import Hamburger from "./Hamburger.astro";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 import SiteIdentity from "./SiteIdentity.astro";
+import NavLinks from "./NavLinks.astro";
 const { activePage } = Astro.props;
 ---
+
 <header>
-  <nav class="kanit-light">
-    <SiteIdentity />
-    <div class="desktop-links">
-      {siteConfig.headerNavLinks?.map((link) => (
-        <a class={activePage === link.href ? "active" : ""} href={import.meta.env.BASE_URL + link.href}>{link.text}</a>
-      ))}
+  <nav class="font-light w-full">
+    <a href={import.meta.env.BASE_URL + "/"}><SiteIdentity /></a>
+    <div class="hidden sm:flex sm:gap-8">
+      {(<NavLinks activePage={activePage} links={siteConfig.headerNavLinks} />)}
     </div>
     <ThemeSwitcher />
     <Hamburger />
   </nav>
-  <div id="mobile-links" class="kanit-regular animated slideOutUp">
-    {siteConfig.headerNavLinks?.map((link) => (
-      <a class={activePage === link.href ? "active" : ""} href={import.meta.env.BASE_URL + link.href}>{link.text}</a>
-    ))}
-    <span id="close-menu">❌</span>
+  <div id="mobile-links" class="font-light animated slideOutUp">
+    <span class="close-menu pt-3">❌</span>
+    <NavLinks
+      activePage={activePage}
+      links={siteConfig.headerNavLinks}
+      isMobileLink={true}
+    />
   </div>
 </header>
 <script is:inline>
@@ -29,42 +31,25 @@ const { activePage } = Astro.props;
     document.querySelector("#mobile-links").classList.toggle("slideOutUp");
     document.querySelector("#mobile-links").classList.toggle("expanded");
     document.querySelector("#mobile-links").classList.toggle("slideInDown");
-    document.querySelector("body").classList.toggle("no-scroll");
+    // document.querySelector("body").classList.toggle("overflow-hidden");
   });
-  document.querySelector("#close-menu").addEventListener("click", () => {
+
+  document.querySelector(".close-menu").addEventListener("click", () => {
     console.log("clicked...");
-    document.querySelector("#mobile-links").classList.replace("slideInDown","slideOutUp");
-    setTimeout(() => {
-      document.querySelector("body").classList.toggle("no-scroll");
-      document.querySelector("#mobile-links").classList.toggle("expanded");
-    }, 1050);
+    document.querySelector("#mobile-links").classList.toggle("expanded");
+    document
+      .querySelector("#mobile-links")
+      .classList.replace("slideInDown", "slideOutUp");
   });
 </script>
 
 <style>
-
-  nav {
-    border-radius: 2rem;
-    font-size: 0.75rem;
-    padding: 0.25rem 1.25rem;
-    gap: 4rem;
-    backdrop-filter: blur(72px);
-  }
   .desktop-links {
     display: flex;
     align-items: center;
-    gap: 2rem
+    gap: 2rem;
   }
-  .active {
-    border-radius: 1rem;
-    padding: 0.125rem 0.75rem;
-  }
-  html.dark .active {
-    color: #ffff85;
-  }
-  html.light .active {
-    color: #ff6b6d;
-  }
+
   #mobile-links {
     display: none;
     height: 0;
@@ -75,73 +60,34 @@ const { activePage } = Astro.props;
   }
   .#mobile-links a {
     display: block;
-    text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  #close-menu {
-    cursor: pointer;
-    padding-top: 2rem;
     text-align: right;
+    padding: 10px 0;
   }
   .expanded {
     display: unset;
-    top: -100vh;
+    top: -90vh;
   }
-
-  html.dark nav {
-    box-shadow: 0px 2px 4px #0000000a;
-  }
-  html.light nav {
-    box-shadow: 0px 2px 4px #0000007a;
-  }
-
   @media (orientation: portrait) {
-    header {
-      flex-direction: column;
-      row-gap: 0.5rem;
-    }
-    nav {
-      border-radius: 1rem;
-      font-size: 0.75rem;
-      gap: 1rem;
-      padding: 0.25rem 0.75rem;
-      width: 100%;
-    }
-    .desktop-links {
-      display: none;
-    }
     #mobile-links.expanded {
-      align-items: center;
+      align-items: end;
       background-color: #0000007a;
       backdrop-filter: blur(72px);
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      justify-content: center;
-      left: unset;
+      gap: 0.5rem;
+      justify-content: end;
       position: absolute;
       z-index: 10;
-      top: -2rem;
       opacity: 1;
-      padding: 1rem 0;
-      min-height: 95svh;
+      padding: 1rem 2rem;
       width: 100vw;
+      top: 0;
+      min-height: fit-content;
       border-bottom-left-radius: 0.5rem;
       border-bottom-right-radius: 0.5rem;
     }
     html.light #mobile-links.expanded {
-        background-color: #ffffff6a;
-    }
-  }
-  @media (max-width: 315px) {
-    nav {
-      border: none;
-      flex-direction: column;
-      padding: 0.25rem;
+      background-color: #ffffff6a;
     }
   }
 </style>

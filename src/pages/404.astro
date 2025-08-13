@@ -1,22 +1,19 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout activePage="404" pageTitle="Space Ahead | 404">
-  <div class="page-content">
-    <h1 class="sigmar-ff text-balance">404</h1>
-    <p class="text-balance">Hey 🧑‍🚀! Looks like you&apos;re lost. The page you&apos;re looking for doesn&apos;t exist.</p>
-    <p class="text-balance">
-      Wanna <a href={"/space-ahead"}>go back home 🌎</a> or <a href="/space-ahead/contact">request support 🆘</a>?
+  <div class="flex flex-col items-center justify-center h-screen page-content">
+    <h1 class="sigmar-ff text-justify">404</h1>
+    <p class="text-justify">
+      Hey 🧑‍🚀! Looks like you&apos;re lost. The page you&apos;re looking for
+      doesn&apos;t exist.
+    </p>
+    <p class="text-justify">
+      Wanna <a class="font-medium" href={"/space-ahead"}>go back home 🌎</a> or <a
+        class="font-medium"
+        href="/space-ahead/contact">request support 🆘</a
+      >?
     </p>
   </div>
 </MainLayout>
-<style>
-    .page-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-    }
-</style>
