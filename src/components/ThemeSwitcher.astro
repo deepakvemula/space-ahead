@@ -6,8 +6,8 @@ import Button from "./Button.astro";
 ---
 
 <Button
-id="themeToggle"
-title="Click to switch Theme"
+  id="themeToggle"
+  title="Click to switch Theme"
   class:list={[
     "p-1! aspect-square border-gray-500 hover:border-space-red dark:hover:border-space-yellow hover:text-space-red dark:hover:text-space-yellow portrait:ml-auto",
   ]}
@@ -17,7 +17,7 @@ title="Click to switch Theme"
 </Button>
 
 <style>
-    .sun {
+  .sun {
     display: block;
   }
   .moon {
@@ -30,18 +30,16 @@ title="Click to switch Theme"
   :global(.dark) .moon {
     display: block;
   }
-  </style>
+</style>
 
 <script is:inline>
-  if (window.theme) {
-    window.theme =
-      localStorage?.getItem("theme") ??
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
-  }
+  theme =
+    localStorage?.getItem("theme") ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
 
-  if (window.theme === "light") {
+  if (theme === "light") {
     document.documentElement.classList.add("light");
     document.documentElement.classList.remove("dark");
   } else {
@@ -49,7 +47,7 @@ title="Click to switch Theme"
     document.documentElement.classList.remove("light");
   }
 
-  localStorage.setItem("theme", window.theme);
+  localStorage.setItem("theme", theme);
 
   handleToggleClick = () => {
     const element = document.documentElement;
