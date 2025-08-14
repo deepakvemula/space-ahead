@@ -55,8 +55,18 @@ const allPosts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
     <div id="posts" class="flex flex-col items-center justify-center w-full">
       <h2 class="sigmar-ff text-balance pt-0! pb-8!">Recent Stories</h2>
       <div class="flex flex-col gap-8 max-w-full text-left">
-        {allPosts.map((post) => <PostCardPreview post={post} />)}
+        {
+          allPosts
+            .slice(0, siteConfig.recentPostLimit)
+            .map((post) => <PostCardPreview post={post} />)
+        }
       </div>
+      <Button
+        href={import.meta.env.BASE_URL + "blogs"}
+        class="space-btn-filled mt-8"
+      >
+        View All Posts
+      </Button>
     </div>
   </div>
 </MainLayout>

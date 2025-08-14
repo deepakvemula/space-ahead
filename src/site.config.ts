@@ -57,6 +57,7 @@ export type SiteConfig = {
     contactInfo?: ContactInfo;
     subscribe?: Subscribe;
     postsPerPage?: number;
+    recentPostLimit: number;
     projectsPerPage?: number;
 };
 
@@ -167,6 +168,7 @@ const siteConfig: SiteConfig = {
         formUrl: '#'
     },
     postsPerPage: 2,
+    recentPostLimit: 3
 };
 
 export default siteConfig;
