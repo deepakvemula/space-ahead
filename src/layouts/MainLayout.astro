@@ -3,8 +3,18 @@ import "../styles/global.css";
 
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
+import Subscribe from "../components/Subscribe.astro";
 
-const { pageTitle, activePage } = Astro.props;
+type LayoutProps = {
+  pageTitle: string;
+  activePage: string;
+  showSubscribeForm?: boolean;
+};
+const {
+  pageTitle,
+  activePage,
+  showSubscribeForm = true,
+} = Astro.props as LayoutProps;
 ---
 
 <!doctype html>
@@ -26,6 +36,7 @@ const { pageTitle, activePage } = Astro.props;
     <main class="max-w-3xl mx-auto">
       <Nav activePage={activePage} />
       <slot />
+      {showSubscribeForm && <Subscribe class="my-12 w-full" />}
       <Footer />
     </main>
   </body>

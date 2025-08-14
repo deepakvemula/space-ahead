@@ -2,7 +2,11 @@
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<MainLayout activePage="404" pageTitle="Space Ahead | 404">
+<MainLayout
+  activePage="404"
+  pageTitle="Space Ahead | 404"
+  showSubscribeForm={false}
+>
   <div class="flex flex-col items-center justify-center h-screen page-content">
     <h1 class="sigmar-ff text-justify">404</h1>
     <p class="text-justify">

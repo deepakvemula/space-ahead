@@ -4,7 +4,6 @@ import MainLayout from "../layouts/MainLayout.astro";
 import siteConfig from "../site.config";
 import { sortItemsByDateDesc } from "../utils/helpers";
 import PostCardPreview from "../components/PostCardPreview.astro";
-import Subscribe from "../components/Subscribe.astro";
 import Button from "../components/Button.astro";
 import { Image } from "astro:assets";
 import heroImage from "../assets/images/pixeltrue-space-discovery.svg";
@@ -59,6 +58,5 @@ const allPosts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
         {allPosts.map((post) => <PostCardPreview post={post} />)}
       </div>
     </div>
-    <Subscribe class="my-16" />
   </div>
 </MainLayout>
