@@ -1,4 +1,5 @@
 ---
+import Button from "../components/Button.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
@@ -7,17 +8,14 @@ import MainLayout from "../layouts/MainLayout.astro";
   pageTitle="Space Ahead | 404"
   showSubscribeForm={false}
 >
-  <div class="flex flex-col items-center justify-center h-screen page-content">
-    <h1 class="sigmar-ff text-justify">404</h1>
-    <p class="text-justify">
+  <div class="flex flex-col items-center justify-center page-content">
+    <h1 class="sigmar-ff">404</h1>
+    <p>
       Hey 🧑‍🚀! Looks like you&apos;re lost. The page you&apos;re looking for
       doesn&apos;t exist.
     </p>
-    <p class="text-justify">
-      Wanna <a class="font-medium" href={"/space-ahead"}>go back home 🌎</a> or <a
-        class="font-medium"
-        href="/space-ahead/contact">request support 🆘</a
-      >?
-    </p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <Button class="font-medium" href={"/space-ahead"}>Go home 🌎</Button>
+    </div>
   </div>
 </MainLayout>
