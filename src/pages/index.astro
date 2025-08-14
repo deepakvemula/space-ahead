@@ -17,14 +17,10 @@ const allPosts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
   pageTitle="Space Ahead - An Astro Personal Blog Template"
 >
   <div
-    class="jumbo-banner flex flex-col sm:flex-row sm:items-center sm:justify-between w-full px-4 py-8 sm:py-12 gap-6"
+    class="jumbo-banner flex flex-col sm:flex-row sm:items-center sm:justify-between w-full px-4 my-12 gap-6"
   >
     <div class="w-full sm:w-fit">
-      <span
-        class="tag rounded-full text-xs px-2 py-1 border border-gray-500 kanit-light"
-        >{siteConfig.hero?.eyebrowText}</span
-      >
-      <h1 class="sigmar-ff leading-tight text-balance">
+      <h1 class="sigmar-ff leading-tight text-balance sm:pt-0!">
         {siteConfig.hero?.title}
       </h1>
       <p class="kanit-regular text-balance text-xs sm:text-base">
@@ -57,11 +53,8 @@ const allPosts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
     </div>
   </div>
   <div class="page-content">
-    <div
-      id="posts"
-      class="my-4 flex flex-col items-center justify-center sm:my-24 max-w-3xl"
-    >
-      <h2 class="sigmar-ff text-balance mb-8">Recent Stories</h2>
+    <div id="posts" class="flex flex-col items-center justify-center w-full">
+      <h2 class="sigmar-ff text-balance pt-0! pb-8!">Recent Stories</h2>
       <div class="flex flex-col gap-8 max-w-full text-left">
         {allPosts.map((post) => <PostCardPreview post={post} />)}
       </div>

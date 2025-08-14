@@ -5,17 +5,19 @@ import sun from "../assets/sun.svg";
 import Button from "./Button.astro";
 ---
 
-<Button id="themeToggle" title="Click to switch Theme">
+<Button
+id="themeToggle"
+title="Click to switch Theme"
+  class:list={[
+    "p-1! aspect-square border-gray-500 hover:border-space-red dark:hover:border-space-yellow hover:text-space-red dark:hover:text-space-yellow portrait:ml-auto",
+  ]}
+>
   <Image src={moon} alt="Moon Icon" class="moon" />
   <Image src={sun} alt="Sun Icon" class="sun" />
 </Button>
 
 <style>
-  #themeToggle {
-    padding: 0.25rem 0.3rem;
-    border-color: gray;
-  }
-  .sun {
+    .sun {
     display: block;
   }
   .moon {
@@ -28,13 +30,7 @@ import Button from "./Button.astro";
   :global(.dark) .moon {
     display: block;
   }
-  @media (orientation: portrait) {
-    #themeToggle {
-      padding: 0.25rem 0.3rem;
-      margin-left: auto;
-    }
-  }
-</style>
+  </style>
 
 <script is:inline>
   if (window.theme) {

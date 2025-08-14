@@ -16,8 +16,11 @@ const { activePage } = Astro.props;
     <ThemeSwitcher />
     <Hamburger />
   </nav>
-  <div id="mobile-links" class="font-light animated slideOutUp">
-    <span class="close-menu pt-3">❌</span>
+  <div
+    id="mobile-links"
+    class="font-light animated h-0 m-0 opacity-0 top-0 w-full"
+  >
+    <span class="close-menu">❌</span>
     <NavLinks
       activePage={activePage}
       links={siteConfig.headerNavLinks}
@@ -28,45 +31,20 @@ const { activePage } = Astro.props;
 <script is:inline>
   document.querySelector("#hamburger-menu").addEventListener("click", () => {
     console.log("clicked...");
-    document.querySelector("#mobile-links").classList.toggle("slideOutUp");
-    document.querySelector("#mobile-links").classList.toggle("expanded");
-    document.querySelector("#mobile-links").classList.toggle("slideInDown");
-    // document.querySelector("body").classList.toggle("overflow-hidden");
+    document.querySelector("#mobile-links").classList.remove("slideOutUp");
+    document.querySelector("#mobile-links").classList.add("expanded");
+    document.querySelector("#mobile-links").classList.add("slideInDown");
   });
 
   document.querySelector(".close-menu").addEventListener("click", () => {
     console.log("clicked...");
-    document.querySelector("#mobile-links").classList.toggle("expanded");
-    document
-      .querySelector("#mobile-links")
-      .classList.replace("slideInDown", "slideOutUp");
+    document.querySelector("#mobile-links").classList.add("slideOutUp");
+    document.querySelector("#mobile-links").classList.add("expanded");
+    document.querySelector("#mobile-links").classList.remove("slideInDown");
   });
 </script>
 
 <style>
-  .desktop-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  #mobile-links {
-    display: none;
-    height: 0;
-    margin: 0;
-    opacity: 0;
-    top: 0;
-    width: 100%;
-  }
-  .#mobile-links a {
-    display: block;
-    text-align: right;
-    padding: 10px 0;
-  }
-  .expanded {
-    display: unset;
-    top: -90vh;
-  }
   @media (orientation: portrait) {
     #mobile-links.expanded {
       align-items: end;

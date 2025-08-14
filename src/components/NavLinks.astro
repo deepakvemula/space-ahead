@@ -10,30 +10,20 @@ const {
 };
 ---
 
-<>
-  {
-    links?.map((link) => {
-      const classNames = [
-        isMobileLink ? "close-menu" : "",
-        activePage === link.text.toLowerCase() ? "active" : "",
-      ]
-        .join(" ")
-        .trim();
-      console.log("link", link.text.toLowerCase() === activePage, classNames);
-      return (
-        <a class={classNames} href={import.meta.env.BASE_URL + link.href}>
-          {link.text}
-        </a>
-      );
-    })
-  }
-</>
-
-<style>
-  html.dark .active {
-    color: #ffff85;
-  }
-  html.light .active {
-    color: #ff6b6d;
-  }
-</style>
+{
+  links?.map((link) => {
+    const classNames = [
+      isMobileLink ? "close-menu" : "",
+      activePage === link.text.toLowerCase()
+        ? "text-space-red! dark:text-space-yellow!"
+        : "",
+    ]
+      .join(" ")
+      .trim();
+    return (
+      <a class={classNames} href={import.meta.env.BASE_URL + link.href}>
+        {link.text}
+      </a>
+    );
+  })
+}

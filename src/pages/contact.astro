@@ -7,26 +7,26 @@ import coverImage from "../assets/images/1.png";
 
 <MainLayout activePage="about" pageTitle="Space Ahead | Contact">
   <div class="page-content">
-    <div class="flex flex-col items-center page-content">
-      <h1 class="sigmar-ff text-justify">{siteConfig.contactInfo?.title}</h1>
+    <h1 class="sigmar-ff">{siteConfig.contactInfo?.title}</h1>
+    <div class="flex flex-col">
       <!-- <Image width={1024} height={600} loading="eager" layout="constrained" class="rounded-4xl mb-8 mx-auto" src={coverImage} alt="An Astronaut walking on a terrain"/> -->
-      <p class="font-light text-justify">
+      <p class="font-light text-left">
         {siteConfig.contactInfo?.text}
       </p>
-      <p class="font-light text-justify">
+      <p class="font-light text-left">
         {siteConfig.contactInfo?.email?.text}<br />
         <a
           href={siteConfig.contactInfo?.email?.href}
-          class="font-light text-justify"
+          class="font-light text-left"
         >
           {siteConfig.contactInfo?.email?.email}
         </a>
       </p>
-      <p class="font-light text-justify">
+      <p class="font-bold text-left flex flex-col sm:flex-row">
         Social Profiles:
         {
           siteConfig.contactInfo?.socialProfiles?.map((profile) => (
-            <a href={profile.href} class="font-light text-justify ml-4">
+            <a href={profile.href} class="font-light text-left ml-4">
               {profile.text}
             </a>
           ))

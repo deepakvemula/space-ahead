@@ -6,7 +6,7 @@ const currentYear = new Date().getFullYear();
 
 <footer class="kanit-light text-xs sm:text-sm">
   <div
-    class="footer-identity flex flex-col items-center justify-center pb-3 min-w-full"
+    class="footer-primary flex flex-col items-center justify-center min-w-full border-b border-gray-500/50"
   >
     <a href={import.meta.env.BASE_URL + "/"}>
       <SiteIdentity
@@ -61,22 +61,3 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 </footer>
-<style>
-  footer {
-    width: calc(100% - 3rem);
-    /* font-size: 0.75rem; */
-    padding: 1rem 0;
-  }
-  .footer-identity {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  @media (orientation: portrait) {
-    footer {
-      /* font-size: 0.5rem; */
-      gap: 1rem;
-    }
-    .footer-secondary {
-      gap: 1.5rem;
-    }
-  }
-</style>

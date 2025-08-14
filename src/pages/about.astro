@@ -8,7 +8,7 @@ import Subscribe from "../components/Subscribe.astro";
 
 <MainLayout activePage="about" pageTitle="Space Ahead | About">
   <div class="flex flex-col items-center page-content">
-    <h1 class="sigmar-ff text-justify">{siteConfig.about?.title}</h1>
+    <h1 class="sigmar-ff">{siteConfig.about?.title}</h1>
     <Image
       width={1024}
       height={600}
@@ -18,7 +18,7 @@ import Subscribe from "../components/Subscribe.astro";
       src={coverImage}
       alt="An Astronaut walking on a terrain"
     />
-    <p class="kanit-light text-justify">
+    <p class="kanit-light text-left">
       {siteConfig.about?.text}
     </p>
     <Subscribe class="my-16" />

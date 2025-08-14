@@ -36,7 +36,7 @@ const { Content } = await render(post);
 <MainLayout>
   <div class="page-content">
     <h1 class="sigmar-ff text-center text-balance">{title}</h1>
-    <p class="pub-details leading-8 text-center kanit-regular text-balance">
+    <p class="leading-8 text-center kanit-regular text-balance text-xs">
       by 🧑‍🚀 <span class="kanit-bold">{author}</span> on <span class="kanit-bold"
         >{new Date(pubDate).toDateString()}</span
       >
@@ -50,13 +50,13 @@ const { Content } = await render(post);
     </p>
     {
       image && image.url && (
-        <Image class="cover-img my-6" src={image?.url} alt={image?.alt || ""} />
+        <Image class="mb-8 my-6" src={image?.url} alt={image?.alt || ""} />
       )
     }
-    <div class="font-light text-justify">
+    <div class="font-light text-left">
       <Content />
     </div>
-    <p class="pub-details kanit-regular text-center text-balance">
+    <p class="kanit-regular text-center text-balance text-xs">
       Tagged: {
         tags.map((tag) => (
           <Button
@@ -85,20 +85,4 @@ const { Content } = await render(post);
     </div>
     <Subscribe class="my-16" />
   </div>
-  <style>
-    .pub-details {
-      font-size: 0.75rem;
-    }
-    .pub-details:not(:last-of-type) {
-      margin-bottom: 0;
-    }
-    .cover-img {
-      margin-bottom: 2rem;
-    }
-    @media (orientation: portrait) {
-      .cover-img {
-        width: 100%;
-      }
-    }
-  </style>
 </MainLayout>
