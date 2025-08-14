@@ -46,7 +46,6 @@ export type SiteConfig = {
     website: string;
     logo?: Image;
     title: string;
-    subtitle?: string;
     description: string;
     image?: Image;
     headerNavLinks?: Link[];
@@ -64,7 +63,6 @@ export type SiteConfig = {
 const siteConfig: SiteConfig = {
     website: 'https://example.com',
     title: 'Space Ahead',
-    subtitle: 'Astro v5 theme for personal blog',
     description: 'Astro.js and Tailwind CSS theme for personal blog created by Siddhesh Thadeshwar',
     image: {
         src: '/space-ahead-preview.jpg',

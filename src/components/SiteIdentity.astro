@@ -7,6 +7,7 @@ type SiteIdentityProps = {
   logoHeight?: number;
   loading?: "eager" | "lazy";
   textSize?: "text-base" | "text-xl";
+  class?: string;
 };
 
 const {
@@ -14,10 +15,11 @@ const {
   logoHeight = 32,
   loading = "eager",
   textSize = "text-base",
+  class: customClass,
 }: SiteIdentityProps = Astro.props;
 ---
 
-<div class="flex items-center gap-2">
+<div class:list={["flex items-center gap-2", customClass]}>
   <Image
     src="/space-ahead/space-ahead-logo.png"
     alt="Logo"
