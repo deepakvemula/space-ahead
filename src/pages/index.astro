@@ -19,6 +19,13 @@ const allPosts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
     class="jumbo-banner flex flex-col sm:flex-row sm:items-center sm:justify-between w-full px-4 my-12 gap-6"
   >
     <div class="w-full sm:w-fit">
+      {
+        siteConfig.hero?.eyebrowText && (
+          <span class="tag rounded-full text-xs px-2 py-1 border border-gray-500 kanit-light">
+            {siteConfig.hero?.eyebrowText}
+          </span>
+        )
+      }
       <h1 class="sigmar-ff leading-tight text-balance sm:pt-0!">
         {siteConfig.hero?.title}
       </h1>
