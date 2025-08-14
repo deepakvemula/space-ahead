@@ -61,7 +61,7 @@ const { Content } = await render(post);
         tags.map((tag) => (
           <Button
             class="px-4! m-2"
-            href={"/space-ahead/tags/" + createSlugFromTitle(tag)}
+            href={`${import.meta.env.BASE_URL}/tags/${createSlugFromTitle(tag)}`}
           >
             {tag}
           </Button>
@@ -69,14 +69,14 @@ const { Content } = await render(post);
       }
     </p>
     <div class="flex items-center justify-center gap-4 my-8">
-      <Button class="back-link" href="/space-ahead/blog"
-        >⬅️ Back to All Stories</Button
-      >
+      <Button class="back-link" href={`${import.meta.env.BASE_URL}/blog`}>
+        ⬅️ Back to All Stories
+      </Button>
       {
         (prevPost || nextPost) && nextPost && (
           <Button
             class="back-link text-balance"
-            href={"/space-ahead/blog/" + nextPost.id}
+            href={`${import.meta.env.BASE_URL}/blog/${nextPost.id}`}
           >
             Next Post: {nextPost.data.title}
           </Button>

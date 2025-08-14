@@ -25,7 +25,10 @@ const tags = getAllTags(posts).sort((tagA, tagB) => {
         tags.map((tag) => {
           const postCount = getPostsByTag(posts, tag.id).length;
           return (
-            <Button href={"/space-ahead/tags/" + tag.id} class="px-4! m-2">
+            <Button
+              href={`${import.meta.env.BASE_URL}/tags/${tag.id}`}
+              class="px-4! m-2"
+            >
               {tag.name} ({postCount})
             </Button>
           );

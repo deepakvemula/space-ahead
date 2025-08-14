@@ -91,15 +91,15 @@ const siteConfig: SiteConfig = {
     footerNavLinks: [
         {
             text: 'About',
-            href: '/space-ahead/about'
+            href: `${import.meta.env.BASE_URL}/about`
         },
         {
             text: 'Contact',
-            href: '/space-ahead/contact'
+            href: `${import.meta.env.BASE_URL}/contact`
         },
         {
             text: 'RSS Feed',
-            href: '/space-ahead/rss.xml'
+            href: `${import.meta.env.BASE_URL}/rss.xml`
         }
     ],
     socialLinks: [

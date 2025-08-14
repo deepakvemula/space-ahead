@@ -16,7 +16,7 @@ const TitleTag = headingLevel;
 
 <a
   class:list={["flex justify-between items-start gap-8 group", className]}
-  href={`/blog/${post.id}/`}
+  href={`${import.meta.env.BASE_URL}/blog/${post.id}/`}
 >
   <div class="grow">
     <TitleTag class="sigmar-ff">{title}</TitleTag>

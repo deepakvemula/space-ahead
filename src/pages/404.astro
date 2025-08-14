@@ -15,7 +15,9 @@ import MainLayout from "../layouts/MainLayout.astro";
       doesn&apos;t exist.
     </p>
     <div class="flex flex-col sm:flex-row gap-4">
-      <Button class="font-medium" href={"/space-ahead"}>Go home 🌎</Button>
+      <Button class="font-medium" href={import.meta.env.BASE_URL}
+        >Go home 🌎</Button
+      >
     </div>
   </div>
 </MainLayout>
