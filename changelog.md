@@ -1,5 +1,35 @@
 # Space Ahead Changelog
 
+## v0.10.0
+
+### New Features
+
+- New contacts page.
+- New Astro Sitemap generator integration.
+- New withBase() utility for centralized usage of `import.meta.BASE_URL`.
+- Subscribe component moved to the shared layout, with option to hide on individual page.
+- Eyebrow is now conditionally displayed, based on value set in site config.
+- Control number of Recent Posts displayed on home page, via site config.
+- Added GNU GPL v3 license.
+
+### Updates
+
+- Major styling is now done using Tailwindcss instead of custom css.
+- Updated consistency with spacing and mobile layout improvements.
+- All links use BASE_URL meta property, consistently.
+- Improved Pagination styling and disabled state.
+- Improved Footer layout with new styling.
+- Improved Subscribe component styling.
+- Improved Theme Toggle component.
+- Improved 404 page.
+- Fix Tagged Post page to show only relevant posts.
+- Fix Post Card Preview styling.
+- Chore: Updated PNPM Workspace and added Prettier.
+
+### Removed
+
+- Subtitle has been removed from site config and footer.
+
 ## v0.9.0
 
 ### Known Issues
