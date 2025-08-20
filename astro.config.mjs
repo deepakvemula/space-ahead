@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
-import swup from "@swup/astro";
 import preact from "@astrojs/preact";
+import sitemap from "@astrojs/sitemap";
+import swup from "@swup/astro";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -15,6 +16,7 @@ export default defineConfig({
       progress: true,
     }),
     preact(),
+    sitemap(),
   ],
 
   image: {
