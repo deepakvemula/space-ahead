@@ -1,6 +1,9 @@
 ---
-import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
 import MainLayout from "../layouts/MainLayout.astro";
+import { withBase } from "../utils/helpers";
+import heroImage from "../assets/images/pixeltrue-space-discovery.svg";
+import SpaceKeyboard from "../components/SpaceKeyboard.astro";
 ---
 
 <MainLayout
@@ -10,14 +13,20 @@ import MainLayout from "../layouts/MainLayout.astro";
 >
   <div class="flex flex-col items-center justify-center page-content">
     <h1 class="sigmar-ff">404</h1>
+    <Image
+      class="cover-img"
+      src={heroImage}
+      alt={"Astronaut in space"}
+      width={400}
+      height={300}
+    />
+    <p>🧑‍🚀: Houston, we have a problem.</p>
     <p>
-      Hey 🧑‍🚀! Looks like you&apos;re lost. The page you&apos;re looking for
-      doesn&apos;t exist.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4">
-      <Button class="font-medium" href={import.meta.env.BASE_URL}
-        >Go home 🌎</Button
+      We couldn't find that link. Verify the address or <a
+        class="font-medium underline"
+        href={withBase("/")}>Go Back Home</a
       >
-    </div>
+    </p>
+    <SpaceKeyboard />
   </div>
 </MainLayout>
