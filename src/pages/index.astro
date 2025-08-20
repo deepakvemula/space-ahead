@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
 import siteConfig from "../site.config";
-import { sortItemsByDateDesc } from "../utils/helpers";
+import { sortItemsByDateDesc, withBase } from "../utils/helpers";
 import PostCardPreview from "../components/PostCardPreview.astro";
 import Button from "../components/Button.astro";
 import { Image } from "astro:assets";
@@ -68,10 +68,7 @@ const allPosts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
             .map((post) => <PostCardPreview post={post} />)
         }
       </div>
-      <Button
-        href={import.meta.env.BASE_URL + "blogs"}
-        class="space-btn-filled mt-8"
-      >
+      <Button href={withBase("/blog")} class="space-btn-filled mt-8">
         View All Posts
       </Button>
     </div>

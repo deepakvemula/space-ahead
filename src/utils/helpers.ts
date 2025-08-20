@@ -31,3 +31,5 @@ export function getPostsByTag(posts: CollectionEntry<'blogs'>[], tagId: string) 
     const filteredPosts: CollectionEntry<'blogs'>[] = posts.filter((post) => (post.data.tags || []).map((tag) => createSlugFromTitle(tag)).includes(tagId));
     return filteredPosts;
 }
+
+export const withBase = (path: string) => `${import.meta.env.BASE_URL}${path}`;

@@ -1,3 +1,5 @@
+import { withBase } from "./utils/helpers";
+
 export type Image = {
     src: string;
     alt?: string;
@@ -63,41 +65,41 @@ export type SiteConfig = {
 const siteConfig: SiteConfig = {
     website: 'https://example.com',
     title: 'Space Ahead',
-    description: 'Astro.js and Tailwind CSS theme for personal blog created by Siddhesh Thadeshwar',
+    description: 'A minimal space-inspired personal blog template built with Astro.js and Tailwind CSS, by Siddhesh Thadeshwar',
     image: {
         src: '/space-ahead-preview.jpg',
-        alt: 'Space Ahead - Astro and Tailwind CSS theme'
+        alt: 'Space Ahead - Astro v5 and Tailwind CSS v4 personal blog theme'
     },
     headerNavLinks: [
         {
             text: 'Home',
-            href: '/'
+            href: withBase('/')
         },
         {
             text: 'Blog',
-            href: '/blog'
+            href: withBase('/blog')
         },
         {
             text: 'Tags',
-            href: '/tags'
+            href: withBase('/tags')
         },
         {
             text: 'About',
-            href: '/about'
+            href: withBase('/about')
         }
     ],
     footerNavLinks: [
         {
             text: 'About',
-            href: `${import.meta.env.BASE_URL}/about`
+            href: withBase('/about')
         },
         {
             text: 'Contact',
-            href: `${import.meta.env.BASE_URL}/contact`
+            href: withBase('/contact')
         },
         {
             text: 'RSS Feed',
-            href: `${import.meta.env.BASE_URL}/rss.xml`
+            href: withBase('/rss.xml')
         }
     ],
     socialLinks: [
@@ -125,7 +127,7 @@ const siteConfig: SiteConfig = {
         actions: [
             {
                 text: 'Read Now',
-                href: '/blog'
+                href: withBase('/blog')
             },
             {
                 text: 'Subscribe',
