@@ -31,7 +31,6 @@ type Props = {
   nextPost: CollectionEntry<"blogs">;
 };
 
-const { href } = Astro.url;
 const { post, prevPost, nextPost } = Astro.props;
 const { title, pubDate, author, tags = [], image } = post.data;
 const { Content } = await render(post);
@@ -44,13 +43,6 @@ const { Content } = await render(post);
       by 🧑‍🚀 <span class="kanit-bold">{author}</span> on <span class="kanit-bold"
         >{new Date(pubDate).toDateString()}</span
       >
-      <IconButton
-        class="ml-3 border-gray-500"
-        href={href}
-        title={"Share this post"}
-      >
-        🔗
-      </IconButton>
     </p>
     {
       image && image.url && (
