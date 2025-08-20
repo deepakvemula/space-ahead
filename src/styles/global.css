@@ -90,16 +90,16 @@ img {
 }
 
 /* links */
-a.button-link,
-button.button-link {
+a.button-link:not(:disabled),
+button.button-link:not(:disabled) {
   @apply inline-flex cursor-pointer items-center justify-center rounded-full border px-6 py-2 leading-tight transition hover:border-space-red hover:text-space-red sm:px-8 hover:dark:border-space-yellow hover:dark:text-space-yellow;
 }
-a.button-link.space-btn-filled,
-button.button-link.space-btn-filled {
+a.button-link.space-btn-filled:not(:disabled),
+button.button-link.space-btn-filled:not(:disabled) {
   @apply bg-black text-whitesmoke hover:border-space-red hover:bg-space-red dark:bg-whitesmoke dark:text-black dark:hover:border-space-yellow dark:hover:bg-space-yellow;
 }
-a.button-link.space-btn-outlined,
-button.button-link.space-btn-outlined {
+a.button-link.space-btn-outlined:not(:disabled),
+button.button-link.space-btn-outlined:not(:disabled) {
   @apply border border-black bg-transparent text-black hover:border-space-red hover:text-space-red dark:border-whitesmoke dark:bg-transparent dark:text-whitesmoke dark:hover:border-space-yellow dark:hover:text-space-yellow;
 }
 
