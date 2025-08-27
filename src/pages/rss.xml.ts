@@ -1,4 +1,4 @@
-import rss, { pagesGlobToRssItems } from "@astrojs/rss";
+import rss from "@astrojs/rss";
 import { withBase } from "../utils/helpers";
 import { getCollection } from "astro:content";
 
