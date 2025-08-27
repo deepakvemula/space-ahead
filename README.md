@@ -1,8 +1,10 @@
-# SPACE Ahead - An Astro v5 Personal Blog Template
+# Space Ahead ✨ - An Astro v5 Personal Blog Template
 
 A minimal space-inspired personal blog template, created by Siddhesh Thadeshwar.
 
-See this [demo](https://djsiddz.github.io/space-ahead) site for more details.
+![Space Ahead ✨](/space-ahead-preview.jpeg)
+
+See the [demo](https://djsiddz.github.io/space-ahead) to know more.
 
 ## Theme Features
 
@@ -88,7 +90,7 @@ You'll see the following folders and files:
 
 ### Credits
 
-- Generated Space Ahead logo and images for demo blog content using Microsoft Designer.
+- Generated Space Ahead ✨ logo and images for demo blog content using Microsoft Designer.
 - Homepage illustration by <a href="https://icons8.com/illustrations/author/ARh4OKrFtdfC">Pixeltrue Ouch!</a>
 - Inspired from these amazing Astro templates - [Dante](https://github.com/JustGoodUI/dante-astro-theme) & [Chiri](https://github.com/the3ash/astro-chiri). Please do check them out.
 

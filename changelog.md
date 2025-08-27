@@ -1,4 +1,14 @@
-# Space Ahead Changelog
+# Space Ahead ✨ Changelog
+
+## v0.11.0
+
+## Updates
+
+- Update Astro, Tailwind & other deps to latest versions.
+- Fix & improve RSS generation.
+- Fix & improve sitemap generation.
+- Implement consistent usage of siteConfig and withBase helper.
+- Readme updated with preview image.
 
 ## v0.10.0
 

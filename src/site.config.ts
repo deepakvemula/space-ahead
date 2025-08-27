@@ -67,7 +67,7 @@ const siteConfig: SiteConfig = {
     title: 'Space Ahead ✨',
     description: 'A minimal space-inspired personal blog template built with Astro.js and Tailwind CSS, by Siddhesh Thadeshwar',
     image: {
-        src: '/space-ahead-preview.jpg',
+        src: '/space-ahead-preview.jpeg',
         alt: 'Space Ahead ✨ - A minimal space-inspired personal blog template, created by Siddhesh Thadeshwar.'
     },
     headerNavLinks: [
