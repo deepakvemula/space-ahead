@@ -22,7 +22,7 @@ const allPosts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
     <div class="w-full sm:w-fit sm:max-w-1/2">
       {
         siteConfig.hero?.eyebrowText && (
-          <span class="tag rounded-full text-xs px-2 py-1 border border-gray-500 kanit-light">
+          <span class="tag rounded-full text-xs px-2 py-0 border border-gray-500 kanit-light">
             {siteConfig.hero?.eyebrowText}
           </span>
         )
