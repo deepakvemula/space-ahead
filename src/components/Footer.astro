@@ -28,20 +28,11 @@ const currentYear = new Date().getFullYear();
   <div
     class="footer-secondary flex flex-col sm:flex-row items-center justify-between gap-6 min-w-full"
   >
-    <div
-      class="flex flex-row gap-3 sm:gap-4 items-center justify-start text-balance"
-    >
-      <a href="https://github.com/djsiddz" target="_blank">
-        <span>&copy; {currentYear}</span>
-        {siteConfig.title}. All rights reserved.
-      </a>
-      <a
-        href="https://github.com/djsiddz/space-ahead"
-        title="Star this on GitHub"
-        target="_blank">⭐</a
-      >
+    <div class="flex flex-row gap-2 items-center justify-start text-balance">
+      <span>&copy; {currentYear}</span>
+      {siteConfig.title}. All rights reserved.
     </div>
-    <div class="flex flex-row gap-3 sm:gap-4 items-center justify-end-safe">
+    <div class="flex flex-row gap-4 items-center justify-end-safe">
       {
         siteConfig.socialLinks?.map((link) => (
           <a href={link.href} title={link.text} target="_blank">

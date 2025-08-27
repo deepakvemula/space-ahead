@@ -82,13 +82,13 @@ You'll see the following folders and files:
 
 ### Support Info
 
-- I provide **paid service** to customize and setup any of my Astro templates for your projects and startups. Contact me on [Contra](https://contra.com/siddhesht) to know more.
+- I provide **paid service** for customizing and setup any of my Astro templates for your projects and startups. Contact me on [Contra](https://contra.com/siddhesht) to know more.
 - Please feel free to create issues for any bugs or feature requests on this theme.
 
 ### Credits
 
 - Generated Space Ahead logo and images for demo blog content using Microsoft Designer.
-- Homepage illustration from by <a href="https://icons8.com/illustrations/author/ARh4OKrFtdfC">Pixeltrue Ouch!</a>
+- Homepage illustration by <a href="https://icons8.com/illustrations/author/ARh4OKrFtdfC">Pixeltrue Ouch!</a>
 - Inspired from these amazing Astro templates - [Dante](https://github.com/JustGoodUI/dante-astro-theme) & [Chiri](https://github.com/the3ash/astro-chiri). Please do check them out.
 
 ## License

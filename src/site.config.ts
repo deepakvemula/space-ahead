@@ -68,7 +68,7 @@ const siteConfig: SiteConfig = {
     description: 'A minimal space-inspired personal blog template built with Astro.js and Tailwind CSS, by Siddhesh Thadeshwar',
     image: {
         src: '/space-ahead-preview.jpg',
-        alt: 'Space Ahead - Astro v5 and Tailwind CSS v4 personal blog theme'
+        alt: 'Space Ahead - A minimal space-inspired personal blog template, created by Siddhesh Thadeshwar.'
     },
     headerNavLinks: [
         {
@@ -86,6 +86,10 @@ const siteConfig: SiteConfig = {
         {
             text: 'About',
             href: withBase('/about')
+        },
+        {
+            text: 'Contact',
+            href: withBase('/contact')
         }
     ],
     footerNavLinks: [
@@ -100,6 +104,10 @@ const siteConfig: SiteConfig = {
         {
             text: 'RSS Feed',
             href: withBase('/rss.xml')
+        },
+                {
+            text: 'Sitemap',
+            href: withBase('/sitemap-index.xml')
         }
     ],
     socialLinks: [
@@ -117,8 +125,8 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        eyebrowText: '🧑‍🚀 Galaxy of Adventures',
-        title: 'Space Ahead ✨',
+        eyebrowText: 'Galaxy of Adventures',
+        title: 'Space Ahead',
         text: "Written by Astro-naut Sid, a space explorer at Beyond Earth.",
         image: {
             src: '/assets/images/pixeltrue-space-discovery.svg',

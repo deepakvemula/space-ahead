@@ -11,6 +11,9 @@ import Button from "../../components/Button.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 import Subscribe from "../../components/Subscribe.astro";
 import IconButton from "../../components/IconButton.astro";
+import ArrowLeft from "../../icons/ArrowLeft.astro";
+import ArrowRight from "../../icons/ArrowRight.astro";
+import siteConfig from "../../site.config";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
@@ -36,7 +39,7 @@ const { title, pubDate, author, tags = [], image } = post.data;
 const { Content } = await render(post);
 ---
 
-<MainLayout>
+<MainLayout pageTitle={siteConfig.title + " | " + title}>
   <div class="page-content">
     <h1 class="sigmar-ff text-center text-balance">{title}</h1>
     <p class="leading-8 text-center kanit-regular text-balance text-xs">
@@ -66,7 +69,7 @@ const { Content } = await render(post);
     </p>
     <div class="flex items-center justify-center gap-4 my-8">
       <Button class="back-link" href={withBase("/blog")}>
-        ⬅️ Back to All Stories
+        <ArrowLeft class="w-5 h-5 fill-current mr-4" /> Back to All Stories
       </Button>
       {
         (prevPost || nextPost) && nextPost && (
@@ -74,7 +77,8 @@ const { Content } = await render(post);
             class="back-link text-balance"
             href={withBase("/blog/" + nextPost.id)}
           >
-            Next Post: {nextPost.data.title}
+            Next Post: {nextPost.data.title}{" "}
+            <ArrowRight class="w-5 h-5 fill-current ml-4" />
           </Button>
         )
       }
