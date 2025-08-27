@@ -4,11 +4,12 @@ import MainLayout from "../layouts/MainLayout.astro";
 import { withBase } from "../utils/helpers";
 import heroImage from "../assets/images/pixeltrue-space-discovery.svg";
 import SpaceKeyboard from "../components/SpaceKeyboard.astro";
+import siteConfig from "../site.config";
 ---
 
 <MainLayout
   activePage="404"
-  pageTitle="Space Ahead | 404"
+  pageTitle={siteConfig.title + " | 404"}
   showSubscribeForm={false}
 >
   <div class="flex flex-col items-center justify-center page-content">

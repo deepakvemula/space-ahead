@@ -40,7 +40,7 @@ const currentTag = allTags.find((tag) => {
 });
 ---
 
-<MainLayout pageTitle={"Space Ahead - " + currentTag?.name + " posts"}>
+<MainLayout pageTitle={siteConfig.title + "| " + currentTag?.name + " posts"}>
   <div class="page-content">
     <h2>Posts tagged with <span class="sigmar-ff">{currentTag?.name}</span></h2>
     <div class="flex flex-col gap-8 max-w-full text-left mt-3">

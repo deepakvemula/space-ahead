@@ -1,13 +1,13 @@
 import rss from "@astrojs/rss";
 import { withBase } from "../utils/helpers";
 import { getCollection } from "astro:content";
+import siteConfig from "../site.config";
 
 export async function GET(context) {
   const blog = await getCollection("blogs");
   return rss({
-    title: "Space Ahead - An Astro v5 Blog",
-    description:
-      "Space Ahead is 👩‍🚀 Astro-naut Sid's blog. He writes stories about his travels to galaxies far and wide.",
+    title: siteConfig.title,
+    description: siteConfig.description,
     site: context.site + withBase("/"),
     trailingSlash: false,
     items: blog.map((post) => ({

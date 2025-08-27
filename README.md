@@ -9,6 +9,7 @@ See this [demo](https://djsiddz.github.io/space-ahead) site for more details.
 - ✅ Tailwind CSS
 - ✅ Mobile-first responsive layout
 - ✅ Dark and light color mode
+- ✅ Custom About, Contact & 404 pages
 - ✅ Hero section with short bio
 - ✅ Blog content collection
 - ✅ Pagination support
