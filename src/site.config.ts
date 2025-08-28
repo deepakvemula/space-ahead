@@ -64,7 +64,7 @@ export type SiteConfig = {
 
 const siteConfig: SiteConfig = {
     website: 'https://example.com',
-    title: 'Space Ahead ✨',
+    title: 'Space Ahead',
     description: 'A minimal space-inspired personal blog template built with Astro.js and Tailwind CSS, by Siddhesh Thadeshwar',
     image: {
         src: '/space-ahead-preview.jpeg',
@@ -126,7 +126,7 @@ const siteConfig: SiteConfig = {
     ],
     hero: {
         eyebrowText: 'Galaxy of Adventures',
-        title: 'Space Ahead',
+        title: 'Space Ahead ✨',
         text: "Written by Astro-naut Sid, a space explorer at Beyond Earth.",
         image: {
             src: '/assets/images/pixeltrue-space-discovery.svg',
