@@ -1,5 +1,12 @@
 # Space Ahead ✨ Changelog
 
+## v0.11.1
+
+## Fixes
+
+- Fix Contact Nav highlight
+- Improve buttons layout on Blog Post page
+
 ## v0.11.0
 
 ## Updates

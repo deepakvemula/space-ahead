@@ -9,8 +9,6 @@ import {
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import Button from "../../components/Button.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
-import Subscribe from "../../components/Subscribe.astro";
-import IconButton from "../../components/IconButton.astro";
 import ArrowLeft from "../../icons/ArrowLeft.astro";
 import ArrowRight from "../../icons/ArrowRight.astro";
 import siteConfig from "../../site.config";
@@ -67,7 +65,9 @@ const { Content } = await render(post);
         ))
       }
     </p>
-    <div class="flex items-center justify-center gap-4 my-8">
+    <div
+      class="flex flex-col sm:flex-row items-center justify-center gap-4 my-8"
+    >
       <Button class="back-link" href={withBase("/blog")}>
         <ArrowLeft class="w-5 h-5 fill-current mr-4" /> Back to All Stories
       </Button>
