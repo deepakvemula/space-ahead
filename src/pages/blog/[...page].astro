@@ -2,7 +2,6 @@
 import type { GetStaticPathsOptions, Page } from "astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 import Pagination from "../../components/Pagination.astro";
-import Subscribe from "../../components/Subscribe.astro";
 import { sortItemsByDateDesc } from "../../utils/helpers";
 import MainLayout from "../../layouts/MainLayout.astro";
 import siteConfig from "../../site.config";
@@ -22,10 +21,11 @@ const allPosts = page.data;
 <MainLayout activePage="blog" pageTitle={siteConfig.title + " | Blog Archive"}>
   <div class="page-content py-8 text-center">
     <h1 class="sigmar-ff">Blog</h1>
-    <p class="font-light text-balance">
-      Read about my space adventures, explorations and the aliens I've met on my
-      journeys.
-    </p>
+    {
+      siteConfig.blog?.description && (
+        <p class="font-light text-balance">{siteConfig.blog?.description}</p>
+      )
+    }
 
     <div
       class="flex flex-col text-left gap-8 mb-4 text-sm sm:text-base max-w-fit mx-auto"

@@ -24,6 +24,10 @@ export type About = {
     text?: string;
 };
 
+export type Blog = {
+    description?: string;
+};
+
 export type ContactInfo = {
     title?: string;
     text?: string;
@@ -57,6 +61,7 @@ export type SiteConfig = {
     about?: About;
     contactInfo?: ContactInfo;
     subscribe?: Subscribe;
+    blog?: Blog;
     postsPerPage?: number;
     recentPostLimit: number;
     projectsPerPage?: number;
@@ -174,6 +179,9 @@ const siteConfig: SiteConfig = {
         title: 'Subscribe to Space Ahead',
         text: 'One update per week. All the latest stories in your inbox.',
         formUrl: '#'
+    },
+    blog: {
+        description: "Read about my space adventures, explorations and the aliens I've met on my journeys."
     },
     postsPerPage: 2,
     recentPostLimit: 3
