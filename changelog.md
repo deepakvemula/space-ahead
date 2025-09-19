@@ -1,15 +1,32 @@
 # Space Ahead ✨ Changelog
 
+## v0.11.3 (Latest)
+
+### New
+
+- New demo site created to showcase how easy it is, to adapt this theme. Check out [Samay Anand's Blog](https://djsiddz.github.io/samay-anand)!
+
+### Updates
+
+- Add control for Blog page content from site config.
+- Use withBase helper for site logo.
+
+## v0.11.2
+
+### Updates
+
+- Dependency updates
+
 ## v0.11.1
 
-## Fixes
+### Fixes
 
 - Fix Contact Nav highlight
 - Improve buttons layout on Blog Post page
 
 ## v0.11.0
 
-## Updates
+### Updates
 
 - Update Astro, Tailwind & other deps to latest versions.
 - Fix & improve RSS generation.
