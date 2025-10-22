@@ -1,6 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import siteConfig from "../site.config";
+import Button from "../components/Button.astro";
+import { BarChart3, Target, Sparkles, ArrowRight } from "lucide-astro";
 
 const services = [
   {
@@ -78,11 +80,11 @@ const services = [
 
     <!-- Advisory Service Detail -->
     <div class="max-w-5xl mx-auto">
-      <div
-        class="rounded-2xl border-2 border-space-red dark:border-space-yellow p-8 sm:p-12 mb-12"
-      >
+      <div class="p-8 sm:p-12 mb-12">
         <div class="text-center mb-8">
-          <div class="text-5xl mb-4">📊</div>
+          <div class="mb-4 flex justify-center">
+            <BarChart3 class="w-16 h-16 text-space-red dark:text-space-yellow" />
+          </div>
           <h2 class="text-3xl sm:text-4xl kanit-bold mb-4">
             Real Estate Advisory
           </h2>
@@ -103,7 +105,7 @@ const services = [
           <div class="grid md:grid-cols-2 gap-6 my-8">
             <div class="rounded-xl p-6 border-2 border-space-stone/30">
               <h3 class="kanit-semibold text-xl mb-3 flex items-center gap-2">
-                <span class="text-2xl">🎯</span>
+                <Target class="w-6 h-6 text-space-red dark:text-space-yellow" />
                 What We Offer
               </h3>
               <ul class="space-y-2 kanit-light">
@@ -146,7 +148,7 @@ const services = [
 
             <div class="rounded-xl p-6 border-2 border-space-stone/30">
               <h3 class="kanit-semibold text-xl mb-3 flex items-center gap-2">
-                <span class="text-2xl">✨</span>
+                <Sparkles class="w-6 h-6 text-space-red dark:text-space-yellow" />
                 Additional Services
               </h3>
               <ul class="space-y-2 kanit-light">
@@ -217,12 +219,9 @@ const services = [
           </div>
 
           <div class="text-center mt-8">
-            <a
-              href="/contact"
-              class="inline-block space-btn-filled px-8 py-4 text-lg"
-            >
-              Schedule a Consultation
-            </a>
+            <Button href="/contact" class="space-btn-filled">
+              Schedule a Consultation <ArrowRight class="w-5 h-5 fill-current ml-2 inline-block" />
+            </Button>
             <p
               class="mt-4 text-sm kanit-light text-gray-600 dark:text-gray-400"
             >
