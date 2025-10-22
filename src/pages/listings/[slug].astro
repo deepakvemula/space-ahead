@@ -58,52 +58,52 @@ const badgeClass =
   pageTitle={listing.Meta_Title}
   description={listing.Meta_Description}
 >
-  <article class="page-content max-w-6xl mx-auto px-4 py-8">
-    <!-- Header Section -->
-    <div class="mb-8 sm:mb-12">
-      <div
-        class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4"
-      >
-        <div class="flex-1">
-          <h1 class="sigmar-ff text-balance mb-3 leading-tight">
-            {listing.Project_Name}
-          </h1>
+  <div class="page-content">
+    <article class="max-w-6xl mx-auto">
+      <!-- Header Section -->
+      <div class="mb-8 sm:mb-12 text-center">
+        <h1 class="sigmar-ff text-balance mb-4 leading-tight">
+          {listing.Project_Name}
+        </h1>
+        
+        {
+          listing.Project_Status && (
+            <div class="flex justify-center mb-4">
+              <span
+                class={`tag rounded-full text-sm px-4 py-2 border-2 shadow-lg kanit-medium font-bold ${badgeClass}`}
+              >
+                {listing.Project_Status}
+              </span>
+            </div>
+          )
+        }
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 text-sm sm:text-base kanit-regular">
           {
             listing.Location_Area && (
-              <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300 flex items-center gap-2">
-                <span class="text-xl">📍</span>
+              <p class="text-gray-600 dark:text-gray-300 flex items-center gap-2">
+                <span class="text-lg">📍</span>
                 <span>{listing.Location_Area}</span>
               </p>
             )
           }
+          {
+            listing.Developer_Name && (
+              <p class="text-gray-600 dark:text-gray-300">
+                by{" "}
+                <strong class="text-gray-900 dark:text-white kanit-bold">
+                  {listing.Developer_Name}
+                </strong>
+              </p>
+            )
+          }
         </div>
-        {
-          listing.Project_Status && (
-            <span
-              class={`tag rounded-full text-sm px-4 py-2 border-2 self-start shadow-lg kanit-medium font-bold ${badgeClass}`}
-            >
-              {listing.Project_Status}
-            </span>
-          )
-        }
       </div>
-
-      {
-        listing.Developer_Name && (
-          <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
-            Developed by{" "}
-            <strong class="text-gray-900 dark:text-white">
-              {listing.Developer_Name}
-            </strong>
-          </p>
-        )
-      }
-    </div>
 
     <!-- Gallery Section -->
     {
       galleryImages.length > 0 && (
-        <div class="mb-8">
+        <div class="my-8">
           <ImageCarousel
             images={galleryImages}
             altPrefix={`${listing.Project_Name} - Image`}
@@ -113,23 +113,23 @@ const badgeClass =
     }
 
     <!-- Price & Key Details Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-12">
       <!-- Pricing Card -->
       {
         (listing.Base_Price_Min_Lakhs ||
           listing.Base_Price_Max_Lakhs ||
           listing.Price_Per_Sqft) && (
-          <div class="bg-white dark:bg-gray-800/60 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
-            <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+          <div class="bg-white/90 dark:bg-gray-800/70 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white kanit-bold">
               Pricing
             </h2>
             <div class="space-y-4">
               {listing.Base_Price_Min_Lakhs && listing.Base_Price_Max_Lakhs && (
                 <div>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 kanit-regular">
                     Price Range
                   </p>
-                  <p class="text-2xl sm:text-3xl font-bold text-space-red dark:text-space-yellow">
+                  <p class="text-3xl sm:text-4xl font-bold text-space-red dark:text-space-yellow kanit-bold">
                     ₹{listing.Base_Price_Min_Lakhs}L - ₹
                     {listing.Base_Price_Max_Lakhs}L
                   </p>
@@ -137,10 +137,10 @@ const badgeClass =
               )}
               {listing.Price_Per_Sqft && (
                 <div>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 kanit-regular">
                     Price per sq.ft
                   </p>
-                  <p class="text-xl font-semibold text-gray-900 dark:text-white">
+                  <p class="text-xl font-semibold text-gray-900 dark:text-white kanit-semibold">
                     ₹{listing.Price_Per_Sqft}
                   </p>
                 </div>
@@ -156,47 +156,47 @@ const badgeClass =
           listing.Total_Units ||
           listing.Possession_Date ||
           listing.RERA_Number) && (
-          <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
-            <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+          <div class="bg-gray-50/90 dark:bg-gray-800/50 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white kanit-bold">
               Project Details
             </h2>
-            <div class="space-y-3 text-sm sm:text-base">
+            <div class="space-y-4 text-sm sm:text-base kanit-regular">
               {listing.Total_Area_Acres && (
-                <div class="flex justify-between items-center py-1">
+                <div class="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
                   <span class="text-gray-600 dark:text-gray-400">
                     Total Area:
                   </span>
-                  <span class="font-semibold text-gray-900 dark:text-white">
+                  <span class="font-semibold text-gray-900 dark:text-white kanit-semibold">
                     {listing.Total_Area_Acres} Acres
                   </span>
                 </div>
               )}
               {listing.Total_Units && (
-                <div class="flex justify-between items-center py-1">
+                <div class="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
                   <span class="text-gray-600 dark:text-gray-400">
                     Total Units:
                   </span>
-                  <span class="font-semibold text-gray-900 dark:text-white">
+                  <span class="font-semibold text-gray-900 dark:text-white kanit-semibold">
                     {listing.Total_Units}
                   </span>
                 </div>
               )}
               {listing.Possession_Date && (
-                <div class="flex justify-between items-center py-1">
+                <div class="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
                   <span class="text-gray-600 dark:text-gray-400">
                     Possession Date:
                   </span>
-                  <span class="font-semibold text-gray-900 dark:text-white">
+                  <span class="font-semibold text-gray-900 dark:text-white kanit-semibold">
                     {listing.Possession_Date}
                   </span>
                 </div>
               )}
               {listing.RERA_Number && (
-                <div class="flex justify-between items-center py-1">
+                <div class="flex justify-between items-center py-2">
                   <span class="text-gray-600 dark:text-gray-400">
                     RERA Number:
                   </span>
-                  <span class="font-semibold text-xs sm:text-sm text-gray-900 dark:text-white break-all">
+                  <span class="font-semibold text-xs sm:text-sm text-gray-900 dark:text-white break-all kanit-semibold">
                     {listing.RERA_Number}
                   </span>
                 </div>
@@ -210,21 +210,21 @@ const badgeClass =
     <!-- Unit Configurations -->
     {
       configurations.length > 0 && (
-        <div class="mb-8 sm:mb-12">
-          <h2 class="text-2xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+        <div class="my-12">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white text-center kanit-bold">
             Unit Configurations
           </h2>
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-wrap justify-center gap-3">
             {configurations.map((config) => (
-              <span class="px-4 sm:px-5 py-2 sm:py-2.5 bg-green-100 dark:bg-green-900/50 text-green-900 dark:text-green-100 border border-green-200 dark:border-green-800 rounded-full font-semibold text-sm sm:text-base">
+              <span class="px-5 py-2.5 bg-green-100 dark:bg-green-900/50 text-green-900 dark:text-green-100 border-2 border-green-200 dark:border-green-800 rounded-full font-semibold text-sm sm:text-base kanit-semibold">
                 {config}
               </span>
             ))}
           </div>
           {listing.Min_Size_Sqft && listing.Max_Size_Sqft && (
-            <p class="mt-4 text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+            <p class="mt-6 text-gray-600 dark:text-gray-300 text-sm sm:text-base text-center kanit-regular">
               Size Range:{" "}
-              <strong class="text-gray-900 dark:text-white">
+              <strong class="text-gray-900 dark:text-white kanit-bold">
                 {listing.Min_Size_Sqft} - {listing.Max_Size_Sqft} sq.ft
               </strong>
             </p>
@@ -236,17 +236,17 @@ const badgeClass =
     <!-- Key Highlights -->
     {
       highlights.length > 0 && (
-        <div class="mb-8 sm:mb-12">
-          <h2 class="text-2xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+        <div class="my-12">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white text-center kanit-bold">
             Key Highlights
           </h2>
-          <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {highlights.map((highlight) => (
-              <li class="flex items-start gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
-                <span class="text-green-600 dark:text-green-400 mt-0.5 text-lg flex-shrink-0">
+              <li class="flex items-start gap-3 p-4 rounded-xl bg-gray-50/90 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+                <span class="text-green-600 dark:text-green-400 mt-0.5 text-xl flex-shrink-0">
                   ✓
                 </span>
-                <span class="text-gray-700 dark:text-gray-200 text-sm sm:text-base">
+                <span class="text-gray-700 dark:text-gray-200 text-sm sm:text-base kanit-regular leading-relaxed">
                   {highlight}
                 </span>
               </li>
@@ -259,12 +259,12 @@ const badgeClass =
     <!-- Project Description -->
     {
       listing.Project_Description && (
-        <div class="mb-8 sm:mb-12">
-          <h2 class="text-2xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+        <div class="my-12">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white text-center kanit-bold">
             About the Project
           </h2>
-          <div class="prose prose-gray dark:prose-invert max-w-none">
-            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
+          <div class="prose prose-gray dark:prose-invert max-w-3xl mx-auto">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg kanit-light text-center">
               {listing.Project_Description}
             </p>
           </div>
@@ -275,16 +275,16 @@ const badgeClass =
     <!-- Floor Plans -->
     {
       floorplanImages.length > 0 && (
-        <div class="mb-8 sm:mb-12">
-          <h2 class="text-2xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+        <div class="my-12">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white text-center kanit-bold">
             Floor Plans
           </h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {floorplanImages.map((image, index) => (
               <img
                 src={image}
                 alt={`Floor Plan ${index + 1}`}
-                class="w-full rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
+                class="w-full rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
                 loading="lazy"
               />
             ))}
@@ -296,11 +296,11 @@ const badgeClass =
     <!-- Video -->
     {
       listing.Video_Link && (
-        <div class="mb-8 sm:mb-12">
-          <h2 class="text-2xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+        <div class="my-12">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white text-center kanit-bold">
             Video Tour
           </h2>
-          <div class="aspect-video rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700">
+          <div class="aspect-video rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto">
             <iframe
               src={listing.Video_Link.replace("watch?v=", "embed/")}
               class="w-full h-full"
@@ -315,14 +315,14 @@ const badgeClass =
     <!-- Location Map -->
     {
       mapSrc && listing.Full_Address && (
-        <div class="mb-8 sm:mb-12">
-          <h2 class="text-2xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+        <div class="my-12">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white text-center kanit-bold">
             Location
           </h2>
-          <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm sm:text-base">
+          <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm sm:text-base text-center kanit-regular">
             {listing.Full_Address}
           </p>
-          <div class="aspect-video rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700">
+          <div class="aspect-video rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto">
             <iframe
               src={mapSrc}
               class="w-full h-full"
@@ -340,20 +340,21 @@ const badgeClass =
     <section
       role="region"
       aria-labelledby="listing-cta-heading"
-      class="rounded-xl p-6 sm:p-8 text-center bg-white/90 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700 shadow-sm max-w-3xl mx-auto"
+      class="my-12 rounded-2xl p-8 text-center bg-white/90 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-700 shadow-sm max-w-3xl mx-auto"
     >
       <h2
         id="listing-cta-heading"
-        class="text-xl sm:text-2xl font-bold mb-2 text-gray-900 dark:text-white"
+        class="text-2xl sm:text-3xl font-bold mb-3 text-gray-900 dark:text-white kanit-bold"
       >
         Interested in this property?
       </h2>
-      <p class="mb-6 text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+      <p class="mb-8 text-gray-600 dark:text-gray-300 text-base sm:text-lg kanit-regular text-balance">
         Get in touch with us for more details and site visits
       </p>
       <a href="/contact" class="button-link space-btn-filled">Contact Us</a>
     </section>
-  </article>
+    </article>
+  </div>
 </MainLayout>
 
 <style>
