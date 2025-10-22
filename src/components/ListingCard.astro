@@ -36,9 +36,14 @@ const badgeClass =
 <article
   class="listing-card group rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 h-full flex flex-col"
 >
-  <a href={withBase(`/listings/${listing.Page_Slug}`)} class="flex flex-col h-full">
+  <a
+    href={withBase(`/listings/${listing.Page_Slug}`)}
+    class="flex flex-col h-full"
+  >
     <!-- Image Container -->
-    <div class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-700">
+    <div
+      class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-700"
+    >
       <PropertyImage
         src={firstImage}
         alt={listing.Project_Name}
@@ -61,10 +66,10 @@ const badgeClass =
     </div>
 
     <!-- Content Container -->
-    <div class="flex flex-col flex-1 p-4 sm:p-5">
+    <div class="flex flex-col flex-1 p-4">
       <!-- Title -->
       <h3
-        class="text-lg sm:text-xl font-bold line-clamp-2 text-gray-900 dark:text-white mb-3 leading-tight"
+        class="text-base sm:text-lg font-bold line-clamp-2 text-gray-900 dark:text-white mb-2 leading-snug"
       >
         {listing.Project_Name}
       </h3>
@@ -72,9 +77,9 @@ const badgeClass =
       <!-- Location -->
       {
         listing.Location_Area && (
-          <div class="flex items-start gap-2 mb-2.5">
-            <span class="text-base mt-0.5 flex-shrink-0">📍</span>
-            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 line-clamp-1 leading-relaxed">
+          <div class="flex items-start gap-1.5 mb-2">
+            <span class="text-sm mt-0.5 flex-shrink-0">📍</span>
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 line-clamp-1">
               {listing.Location_Area}
             </p>
           </div>
@@ -84,7 +89,7 @@ const badgeClass =
       <!-- Developer -->
       {
         listing.Developer_Name && (
-          <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+          <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
             by{" "}
             <span class="font-semibold text-gray-700 dark:text-gray-200">
               {listing.Developer_Name}
@@ -93,61 +98,49 @@ const badgeClass =
         )
       }
 
-      <!-- Divider -->
+      <!-- Configurations & Size - Compact -->
       {
         (listing.Unit_Configurations ||
           (listing.Min_Size_Sqft && listing.Max_Size_Sqft)) && (
-          <div class="border-t border-gray-200 dark:border-gray-700 pt-3 mb-3" />
-        )
-      }
-
-      <!-- Configurations & Size -->
-      {
-        (listing.Unit_Configurations ||
-          (listing.Min_Size_Sqft && listing.Max_Size_Sqft)) && (
-          <div class="space-y-2 mb-4">
+          <div class="flex items-center justify-between gap-2 text-xs sm:text-sm mb-2 pb-2 border-b border-gray-200 dark:border-gray-700">
             {listing.Unit_Configurations && (
-              <div class="flex items-center gap-2">
-                <span class="text-gray-600 dark:text-gray-300 font-semibold text-sm sm:text-base">
-                  {listing.Unit_Configurations}
-                </span>
-              </div>
+              <span class="text-gray-600 dark:text-gray-300 font-semibold">
+                {listing.Unit_Configurations}
+              </span>
             )}
             {listing.Min_Size_Sqft && listing.Max_Size_Sqft && (
-              <div class="text-sm text-gray-500 dark:text-gray-400">
+              <span class="text-gray-500 dark:text-gray-400 text-right">
                 {listing.Min_Size_Sqft} - {listing.Max_Size_Sqft} sq.ft
-              </div>
+              </span>
             )}
           </div>
         )
       }
 
-      <!-- Price Section - Pushed to bottom -->
+      <!-- Price Section - Compact -->
       {
         (priceRange || listing.Price_Per_Sqft) && (
-          <div class="mt-auto pt-3 border-t border-gray-200 dark:border-gray-700">
-            <div class="flex items-end justify-between gap-3">
-              {priceRange && (
-                <div class="flex flex-col">
-                  <span class="text-xs text-gray-500 dark:text-gray-400 mb-1">
-                    Starting from
-                  </span>
-                  <p class="text-lg sm:text-xl font-bold text-space-red dark:text-space-yellow">
-                    {priceRange}
-                  </p>
+          <div class="mt-auto flex items-end justify-between gap-2">
+            {priceRange && (
+              <div>
+                <span class="text-[10px] text-gray-500 dark:text-gray-400 block mb-0.5">
+                  From
+                </span>
+                <p class="text-base sm:text-lg font-bold text-space-red dark:text-space-yellow leading-none">
+                  {priceRange}
+                </p>
+              </div>
+            )}
+            {listing.Price_Per_Sqft && (
+              <div class="text-right">
+                <div class="text-[10px] text-gray-500 dark:text-gray-400 mb-0.5">
+                  per sq.ft
                 </div>
-              )}
-              {listing.Price_Per_Sqft && (
-                <div class="text-right">
-                  <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">
-                    per sq.ft
-                  </div>
-                  <div class="text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-200">
-                    ₹{listing.Price_Per_Sqft}
-                  </div>
+                <div class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200">
+                  ₹{listing.Price_Per_Sqft}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         )
       }
