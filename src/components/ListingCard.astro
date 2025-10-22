@@ -1,0 +1,155 @@
+---
+import type { Listing } from "../utils/listings";
+import { formatPriceRange, parseImageUrls } from "../utils/listings";
+import { withBase } from "../utils/helpers";
+import PropertyImage from "./PropertyImage.astro";
+
+interface Props {
+  listing: Listing;
+}
+
+const { listing } = Astro.props;
+const priceRange = formatPriceRange(
+  listing.Base_Price_Min_Lakhs,
+  listing.Base_Price_Max_Lakhs
+);
+const imageUrls = parseImageUrls(listing.Gallery_Image_URLs);
+const firstImage = imageUrls[0] || "placeholder.jpg";
+
+// Map listing status to theme-aligned badge styles
+const normalizedStatus = (listing.Project_Status || "").toLowerCase().trim();
+const statusStyles: Record<string, string> = {
+  "under construction":
+    "border-space-yellow text-space-stone bg-space-yellow/50 dark:text-space-yellow dark:border-space-yellow dark:bg-transparent",
+  "ready to move":
+    "border-space-red text-space-red bg-space-red/30 dark:border-space-yellow dark:text-space-yellow dark:bg-transparent",
+  "new launch":
+    "border-space-stone text-space-stone bg-space-sand/70 dark:border-whitesmoke dark:text-whitesmoke dark:bg-transparent",
+  "sold out":
+    "border-gray-500 text-gray-800 bg-gray-200 dark:border-gray-500 dark:text-gray-400 dark:bg-transparent",
+};
+const badgeClass =
+  statusStyles[normalizedStatus] ||
+  "border-gray-400/60 text-gray-700 dark:text-gray-200 dark:border-gray-500/60";
+---
+
+<article
+  class="listing-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700"
+>
+  <a href={withBase(`/listings/${listing.Page_Slug}`)} class="block h-full">
+    <div class="aspect-video overflow-hidden bg-gray-200 dark:bg-gray-700">
+      <PropertyImage
+        src={firstImage}
+        alt={listing.Project_Name}
+        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+        width={600}
+        height={400}
+        loading="lazy"
+      />
+    </div>
+    <div class="px-4 py-3 sm:px-5 sm:py-4 flex flex-col h-full tight">
+      <div class="flex items-start justify-between gap-2 mb-2.5">
+        <h3
+          class="text-base sm:text-lg font-bold sm:line-clamp-2 line-clamp-1 text-gray-900 dark:text-white flex-1"
+        >
+          {listing.Project_Name}
+        </h3>
+        {
+          listing.Project_Status && (
+            <span
+              class={`tag rounded-full text-[10px] sm:text-xs px-2.5 py-0.5 border flex-shrink-0 kanit-light ${badgeClass}`}
+            >
+              {listing.Project_Status}
+            </span>
+          )
+        }
+      </div>
+
+      {
+        listing.Location_Area && (
+          <p class="text-sm text-gray-600 dark:text-gray-300 !mb-1.5 line-clamp-1 flex items-center gap-1.5">
+            <span class="text-sm">📍</span>
+            <span>{listing.Location_Area}</span>
+          </p>
+        )
+      }
+
+      {
+        listing.Developer_Name && (
+          <p class="text-sm text-gray-500 dark:text-gray-400 !mb-1.5 line-clamp-1">
+            by{" "}
+            <span class="font-medium text-gray-700 dark:text-gray-300">
+              {listing.Developer_Name}
+            </span>
+          </p>
+        )
+      }
+
+      {
+        (listing.Unit_Configurations ||
+          (listing.Min_Size_Sqft && listing.Max_Size_Sqft)) && (
+          <div class="flex items-center justify-between text-xs sm:text-sm mb-1.5 gap-2 flex-wrap">
+            {listing.Unit_Configurations && (
+              <span class="text-gray-600 dark:text-gray-300 font-medium">
+                {listing.Unit_Configurations}
+              </span>
+            )}
+            {listing.Min_Size_Sqft && listing.Max_Size_Sqft && (
+              <span class="text-gray-500 dark:text-gray-400">
+                {listing.Min_Size_Sqft} - {listing.Max_Size_Sqft} sq.ft
+              </span>
+            )}
+          </div>
+        )
+      }
+
+      {
+        (priceRange || listing.Price_Per_Sqft) && (
+          <div class="flex items-baseline justify-between mt-auto pt-1">
+            {priceRange && (
+              <p class="text-sm sm:text-base font-bold text-space-red dark:text-space-yellow flex items-baseline gap-1 m-0">
+                <span class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
+                  From
+                </span>
+                <span>{priceRange}</span>
+              </p>
+            )}
+            {listing.Price_Per_Sqft && (
+              <span class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 text-right">
+                ₹{listing.Price_Per_Sqft}/sq.ft
+              </span>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </a>
+</article>
+
+<style>
+  .listing-card:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Make paragraphs inside cards tighter than global defaults */
+  .tight p {
+    margin-bottom: 0.5rem;
+  }
+  .tight p:last-child {
+    margin-bottom: 0;
+  }
+
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

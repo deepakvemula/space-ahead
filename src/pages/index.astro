@@ -8,13 +8,18 @@ import Button from "../components/Button.astro";
 import { Image } from "astro:assets";
 import heroImage from "../assets/images/pixeltrue-space-discovery.svg";
 import ArrowRight from "../icons/ArrowRight.astro";
+import ListingsGrid from "../components/ListingsGrid.astro";
+import { fetchListings } from "../utils/listings";
 
 const allPosts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
+const allListings = await fetchListings();
+const featuredListings = allListings.slice(0, 6); // Show first 6 listings
 ---
 
 <MainLayout
   activePage="home"
-  pageTitle={siteConfig.title + " | An Astro Personal Blog Template"}
+  pageTitle={siteConfig.title +
+    " | Data-Backed Real Estate & Wealth Advisory | BITS & IIM Alum"}
 >
   <div
     class="jumbo-banner flex flex-col sm:flex-row sm:items-center sm:justify-between w-full px-4 my-12 gap-6"
@@ -60,6 +65,22 @@ const allPosts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
     </div>
   </div>
   <div class="page-content">
+    <!-- Property Listings Section -->
+    <div
+      id="listings"
+      class="flex flex-col items-center justify-center w-full mb-16"
+    >
+      <ListingsGrid listings={featuredListings} title="Featured Properties" />
+      {
+        allListings.length > 6 && (
+          <Button href={withBase("/listings")} class="space-btn-filled mt-8">
+            View All Properties <ArrowRight class="w-5 h-5 fill-current ml-4" />
+          </Button>
+        )
+      }
+    </div>
+
+    <!-- Recent Stories Section -->
     <div id="posts" class="flex flex-col items-center justify-center w-full">
       <h2 class="sigmar-ff text-balance pt-0! pb-8!">Recent Stories</h2>
       <div class="flex flex-col gap-8 max-w-full text-left">
