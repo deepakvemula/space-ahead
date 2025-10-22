@@ -1,0 +1,196 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import siteConfig from "../site.config";
+
+const services = [
+  {
+    id: "advisory",
+    title: "Advisory",
+    active: true,
+    description: "Comprehensive real estate consulting backed by data and 12+ years of expertise",
+    icon: "📊",
+  },
+  {
+    id: "bulk-land-deals",
+    title: "Bulk Land Deals - Issue Resolving",
+    active: false,
+    icon: "🏗️",
+  },
+  {
+    id: "sale-mandates",
+    title: "Sale Mandates",
+    active: false,
+    icon: "📝",
+  },
+  {
+    id: "fractional-real-estate",
+    title: "Fractional Real Estate",
+    active: false,
+    icon: "🏘️",
+  },
+  {
+    id: "property-management",
+    title: "Property Management Services",
+    active: false,
+    icon: "🔑",
+  },
+  {
+    id: "non-local-investment",
+    title: "Non Local Investment Marketing to Local Teams",
+    active: false,
+    icon: "🌐",
+  },
+  {
+    id: "global-prop-advisory",
+    title: "Global Prop Advisory",
+    active: false,
+    icon: "🌍",
+  },
+];
+---
+
+<MainLayout activePage="services" pageTitle={siteConfig.title + " | Services"}>
+  <div class="page-content">
+    <h1 class="sigmar-ff text-balance mb-4">Our Services</h1>
+    <p class="kanit-light text-lg text-balance mb-12 max-w-3xl mx-auto">
+      Expert real estate solutions tailored to your investment goals
+    </p>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 max-w-6xl mx-auto">
+      {
+        services.map((service) => (
+          <div
+            class={`rounded-2xl border-2 p-6 transition-all ${
+              service.active
+                ? "bg-space-stone/50 dark:bg-space-stone/10 border-space-red dark:border-space-yellow cursor-pointer hover:shadow-lg"
+                : "bg-gray-100/50 dark:bg-gray-800/30 border-gray-300 dark:border-gray-700 opacity-60"
+            }`}
+          >
+            <div class="text-4xl mb-3">{service.icon}</div>
+            <h3 class="kanit-semibold text-lg mb-2">{service.title}</h3>
+            {service.description && (
+              <p class="kanit-light text-sm text-gray-600 dark:text-gray-400">
+                {service.description}
+              </p>
+            )}
+            {!service.active && (
+              <span class="inline-block mt-2 text-xs kanit-medium text-gray-500 dark:text-gray-500">
+                Coming Soon
+              </span>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Advisory Service Detail -->
+    <div class="max-w-5xl mx-auto">
+      <div class="rounded-2xl bg-space-stone/50 dark:bg-space-stone/10 border-2 border-space-red dark:border-space-yellow p-8 sm:p-12 mb-12">
+        <div class="text-center mb-8">
+          <div class="text-5xl mb-4">📊</div>
+          <h2 class="text-3xl sm:text-4xl kanit-bold mb-4">Real Estate Advisory</h2>
+          <p class="text-lg kanit-medium text-space-red dark:text-space-yellow">
+            Data-Backed Property & Wealth Advisory
+          </p>
+        </div>
+
+        <div class="space-y-6 kanit-regular text-left">
+          <p class="text-lg">
+            Make informed real estate decisions with expert guidance from a BITS/IIM Alum with over 12 years of industry experience. Our advisory service combines deep market knowledge, data analytics, and strategic insights to help you navigate the complex world of property investment.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 my-8">
+            <div class="bg-white/50 dark:bg-white/5 rounded-xl p-6 border border-space-stone/30">
+              <h3 class="kanit-semibold text-xl mb-3 flex items-center gap-2">
+                <span class="text-2xl">🎯</span>
+                What We Offer
+              </h3>
+              <ul class="space-y-2 kanit-light">
+                <li class="flex items-start gap-2">
+                  <span class="text-space-red dark:text-space-yellow mt-1">•</span>
+                  <span>Comprehensive market analysis and property valuation</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-space-red dark:text-space-yellow mt-1">•</span>
+                  <span>Investment strategy tailored to your financial goals</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-space-red dark:text-space-yellow mt-1">•</span>
+                  <span>Risk assessment and mitigation planning</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-space-red dark:text-space-yellow mt-1">•</span>
+                  <span>Portfolio diversification recommendations</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-space-red dark:text-space-yellow mt-1">•</span>
+                  <span>ROI projections and financial modeling</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-white/50 dark:bg-white/5 rounded-xl p-6 border border-space-stone/30">
+              <h3 class="kanit-semibold text-xl mb-3 flex items-center gap-2">
+                <span class="text-2xl">✨</span>
+                Additional Services
+              </h3>
+              <ul class="space-y-2 kanit-light">
+                <li class="flex items-start gap-2">
+                  <span class="text-space-red dark:text-space-yellow mt-1">•</span>
+                  <span>Vastu compliance checks and recommendations</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-space-red dark:text-space-yellow mt-1">•</span>
+                  <span>Legal documentation review and guidance</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-space-red dark:text-space-yellow mt-1">•</span>
+                  <span>Builder credibility assessment</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-space-red dark:text-space-yellow mt-1">•</span>
+                  <span>Location analysis and growth potential evaluation</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-space-red dark:text-space-yellow mt-1">•</span>
+                  <span>End-to-end transaction support</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-space-red/10 to-space-yellow/10 dark:from-space-red/20 dark:to-space-yellow/20 rounded-xl p-6 border-l-4 border-space-red dark:border-space-yellow">
+            <h3 class="kanit-semibold text-xl mb-3">Why Choose Our Advisory?</h3>
+            <div class="space-y-3 kanit-light">
+              <p>
+                <strong class="kanit-medium">Data-Driven Approach:</strong> We leverage market data, historical trends, and predictive analytics to provide you with actionable insights, not just opinions.
+              </p>
+              <p>
+                <strong class="kanit-medium">Proven Track Record:</strong> With 12+ years in the industry and an educational background from BITS and IIM, we bring both academic rigor and practical expertise to every consultation.
+              </p>
+              <p>
+                <strong class="kanit-medium">Holistic Perspective:</strong> Beyond just property selection, we consider Vastu principles, legal compliance, and wealth management to ensure your investment aligns with your overall financial goals.
+              </p>
+              <p>
+                <strong class="kanit-medium">Personalized Service:</strong> Every investor has unique needs. We take the time to understand your objectives, risk tolerance, and timeline to craft a customized strategy.
+              </p>
+            </div>
+          </div>
+
+          <div class="text-center mt-8">
+            <a
+              href="/contact"
+              class="inline-block space-btn-filled px-8 py-4 text-lg"
+            >
+              Schedule a Consultation
+            </a>
+            <p class="mt-4 text-sm kanit-light text-gray-600 dark:text-gray-400">
+              Let's discuss how we can help you make smarter real estate investments
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

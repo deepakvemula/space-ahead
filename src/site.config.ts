@@ -85,6 +85,10 @@ const siteConfig: SiteConfig = {
       text: "Properties",
       href: withBase("/listings"),
     },
+    {
+      text: "Services",
+      href: withBase("/services"),
+    },
     // {
     //   text: "Blog",
     //   href: withBase("/blog"),
