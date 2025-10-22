@@ -120,19 +120,19 @@ const badgeClass =
       <!-- Price Section - Compact -->
       {
         (priceRange || listing.Price_Per_Sqft) && (
-          <div class="mt-auto flex items-center justify-between gap-3">
+          <div class="my-auto flex items-center justify-between gap-3">
             {priceRange && (
-              <div class="flex flex-col justify-center">
+              <div class="flex flex-col items-center justify-center">
                 <span class="text-[10px] text-gray-500 dark:text-gray-400 block mb-0.5">
                   From
                 </span>
-                <p class="text-base sm:text-lg font-bold text-space-red dark:text-space-yellow leading-none">
+                <p class="text-base sm:text-lg font-bold text-space-red dark:text-space-yellow leading-none m-0">
                   {priceRange}
                 </p>
               </div>
             )}
             {listing.Price_Per_Sqft && (
-              <div class="flex flex-col justify-center text-right">
+              <div class="flex flex-col  justify-center text-right">
                 <div class="text-[10px] text-gray-500 dark:text-gray-400 mb-0.5">
                   per sq.ft
                 </div>
