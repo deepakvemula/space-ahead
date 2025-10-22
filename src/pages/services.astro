@@ -52,31 +52,29 @@ const services = [
 
 <MainLayout activePage="services" pageTitle={siteConfig.title + " | Services"}>
   <div class="page-content">
-    <h1 class="sigmar-ff text-balance mb-4">Our Services</h1>
+    <!-- Services Grid - Hidden when only one service -->
+    <!-- <h1 class="sigmar-ff text-balance mb-4">Our Services</h1>
     <p class="kanit-light text-lg text-balance mb-12 max-w-3xl mx-auto">
       Expert real estate solutions tailored to your investment goals
     </p>
 
-    <!-- Services Grid -->
     <div
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 max-w-6xl mx-auto"
     >
       {
-        services.filter((service) => service.active).map((service) => (
-          <div
-            class="rounded-2xl border-2 border-space-red dark:border-space-yellow p-6 transition-all hover:shadow-lg"
-          >
-            <div class="text-4xl mb-3">{service.icon}</div>
-            <h3 class="kanit-semibold text-lg mb-2">{service.title}</h3>
-            {service.description && (
-              <p class="kanit-light text-sm">
-                {service.description}
-              </p>
-            )}
-          </div>
-        ))
+        services
+          .filter((service) => service.active)
+          .map((service) => (
+            <div class="rounded-2xl border-2 border-space-red dark:border-space-yellow p-6 transition-all hover:shadow-lg">
+              <div class="text-4xl mb-3">{service.icon}</div>
+              <h3 class="kanit-semibold text-lg mb-2">{service.title}</h3>
+              {service.description && (
+                <p class="kanit-light text-sm">{service.description}</p>
+              )}
+            </div>
+          ))
       }
-    </div>
+    </div> -->
 
     <!-- Advisory Service Detail -->
     <div class="max-w-5xl mx-auto">
@@ -103,9 +101,7 @@ const services = [
           </p>
 
           <div class="grid md:grid-cols-2 gap-6 my-8">
-            <div
-              class="rounded-xl p-6 border-2 border-space-stone/30"
-            >
+            <div class="rounded-xl p-6 border-2 border-space-stone/30">
               <h3 class="kanit-semibold text-xl mb-3 flex items-center gap-2">
                 <span class="text-2xl">🎯</span>
                 What We Offer
@@ -148,9 +144,7 @@ const services = [
               </ul>
             </div>
 
-            <div
-              class="rounded-xl p-6 border-2 border-space-stone/30"
-            >
+            <div class="rounded-xl p-6 border-2 border-space-stone/30">
               <h3 class="kanit-semibold text-xl mb-3 flex items-center gap-2">
                 <span class="text-2xl">✨</span>
                 Additional Services
