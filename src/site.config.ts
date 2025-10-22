@@ -85,14 +85,14 @@ const siteConfig: SiteConfig = {
       text: "Properties",
       href: withBase("/listings"),
     },
-    {
-      text: "Blog",
-      href: withBase("/blog"),
-    },
-    {
-      text: "Tags",
-      href: withBase("/tags"),
-    },
+    // {
+    //   text: "Blog",
+    //   href: withBase("/blog"),
+    // },
+    // {
+    //   text: "Tags",
+    //   href: withBase("/tags"),
+    // },
     {
       text: "About",
       href: withBase("/about"),
@@ -143,9 +143,13 @@ const siteConfig: SiteConfig = {
       alt: "A person sitting at a desk in front of a computer",
     },
     actions: [
+      // {
+      //   text: "Read Now",
+      //   href: withBase("/blog"),
+      // },
       {
-        text: "Read Now",
-        href: withBase("/blog"),
+        text: "View Properties",
+        href: withBase("/listings"),
       },
       {
         text: "Subscribe",
