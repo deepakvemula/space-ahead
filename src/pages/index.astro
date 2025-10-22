@@ -10,6 +10,7 @@ import heroImage from "../assets/images/pixeltrue-space-discovery.svg";
 import ArrowRight from "../icons/ArrowRight.astro";
 import ListingsGrid from "../components/ListingsGrid.astro";
 import { fetchListings } from "../utils/listings";
+import Testimonials from "../components/Testimonials.astro";
 
 // const allPosts = (await getCollection("blogs")).sort(sortItemsByDateDesc);
 const allListings = await fetchListings();
@@ -79,6 +80,9 @@ const featuredListings = allListings.slice(0, 6); // Show first 6 listings
         )
       }
     </div>
+
+    <!-- Testimonials Section -->
+    <Testimonials />
 
     <!-- Recent Stories Section -->
     <!-- <div id="posts" class="flex flex-col items-center justify-center w-full">
