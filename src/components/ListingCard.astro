@@ -20,17 +20,17 @@ const firstImage = imageUrls[0] || "placeholder.jpg";
 const normalizedStatus = (listing.Project_Status || "").toLowerCase().trim();
 const statusStyles: Record<string, string> = {
   "under construction":
-    "border-space-yellow text-space-stone bg-space-yellow/50 dark:text-space-yellow dark:border-space-yellow dark:bg-transparent",
+    "border-space-yellow text-gray-900 bg-space-yellow/90 dark:text-gray-900 dark:border-space-yellow dark:bg-space-yellow/90",
   "ready to move":
-    "border-space-red text-space-red bg-space-red/30 dark:border-space-yellow dark:text-space-yellow dark:bg-transparent",
+    "border-space-red text-white bg-space-red dark:border-space-yellow dark:text-gray-900 dark:bg-space-yellow/90",
   "new launch":
-    "border-space-stone text-space-stone bg-space-sand/70 dark:border-whitesmoke dark:text-whitesmoke dark:bg-transparent",
+    "border-space-stone text-white bg-space-stone dark:border-whitesmoke dark:text-gray-900 dark:bg-whitesmoke/90",
   "sold out":
-    "border-gray-500 text-gray-800 bg-gray-200 dark:border-gray-500 dark:text-gray-400 dark:bg-transparent",
+    "border-gray-400 text-white bg-gray-500 dark:border-gray-400 dark:text-gray-900 dark:bg-gray-300",
 };
 const badgeClass =
   statusStyles[normalizedStatus] ||
-  "border-gray-400/60 text-gray-700 dark:text-gray-200 dark:border-gray-500/60";
+  "border-gray-400 text-white bg-gray-600 dark:text-gray-900 dark:bg-gray-300 dark:border-gray-400";
 ---
 
 <article
@@ -56,7 +56,7 @@ const badgeClass =
         listing.Project_Status && (
           <div class="absolute top-3 right-3">
             <span
-              class={`tag rounded-full text-xs px-3 py-1.5 border shadow-md backdrop-blur-sm kanit-light font-semibold ${badgeClass}`}
+              class={`tag rounded-full text-xs px-3 py-1.5 border-2 shadow-lg backdrop-blur-md kanit-medium font-bold ${badgeClass}`}
             >
               {listing.Project_Status}
             </span>
@@ -126,9 +126,9 @@ const badgeClass =
                 <span class="text-[10px] text-gray-500 dark:text-gray-400 block mb-0.5">
                   From
                 </span>
-                <p class="text-base sm:text-lg font-bold text-space-red dark:text-space-yellow leading-none m-0">
+                <div class="text-base sm:text-lg font-bold text-space-red dark:text-space-yellow leading-none">
                   {priceRange}
-                </p>
+                </div>
               </div>
             )}
             {listing.Price_Per_Sqft && (
